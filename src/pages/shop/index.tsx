@@ -7,13 +7,13 @@ export default function Shop() {
 
   return (
     <>
-        <section className="bg-zinc-900 py-4 border-t border-zinc-800 flex justify-between items-center pt-20">
+        <section className="bg-zinc-900 py-4 border-t border-zinc-800 flex max-sm:flex-col justify-between items-center pt-20 max-sm:p-4">
             <div className=" px-4 sm:px-6 lg:px-8">
                 <h2 className="text-purple-200 text-xl ">Browse Our Products</h2>
                 <p className="mt-2 text-gray-600 text-sm">Find exactly what you are looking for with a quick search.</p>
             </div>
-            <div className="p-4 pr-10 w-1/4 relative">
-                <input type="text" className='p-2 w-full rounded' />
+            <div className="p-4 pr-10 w-1/4 max-sm:w-full relative">
+                <input type="text" placeholder='Search for a product' className='p-2 w-full rounded' />
                 <BsSearch className='absolute bottom-7 right-12'/>
             </div>
         </section>

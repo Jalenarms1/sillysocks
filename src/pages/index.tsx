@@ -81,7 +81,7 @@ const Home: NextPage = () => {
                         <span className="text-gray-600 text-sm ml-2 line-through">$69.99</span>
                     </div>
                     <div className="mt-2">
-                        <button className="py-2 px-4 bg-purple-800 text-white rounded-lg hover:bg-gray-700">Add to Cart</button>
+                        <button className="py-2 px-4 bg-purple-800 hover:bg-purple-700 text-white rounded-lg ">Add to Cart</button>
                     </div>
                     </div>
                 </div>
@@ -96,7 +96,7 @@ const Home: NextPage = () => {
                         <span className="text-gray-600 text-sm ml-2 line-through">$69.99</span>
                     </div>
                     <div className="mt-2">
-                        <button className="py-2 px-4 bg-purple-800 text-white rounded-lg hover:bg-gray-700">Add to Cart</button>
+                        <button className="py-2 px-4 bg-purple-800 text-white rounded-lg hover:bg-purple-700">Add to Cart</button>
                     </div>
                     </div>
                 </div>
@@ -111,7 +111,7 @@ const Home: NextPage = () => {
                         <span className="text-gray-600 text-sm ml-2 line-through">$69.99</span>
                     </div>
                     <div className="mt-2">
-                        <button className="py-2 px-4 bg-purple-800 text-white rounded-lg hover:bg-gray-700">Add to Cart</button>
+                        <button className="py-2 px-4 bg-purple-800 text-white rounded-lg hover:bg-purple-700">Add to Cart</button>
                     </div>
                     </div>
                 </div>
@@ -126,15 +126,17 @@ const Home: NextPage = () => {
                         <span className="text-gray-600 text-sm ml-2 line-through">$69.99</span>
                     </div>
                     <div className="mt-2">
-                        <button className="py-2 px-4 bg-purple-800 text-white rounded-lg hover:bg-gray-700">Add to Cart</button>
+                        <button className="py-2 px-4 bg-purple-800 text-white rounded-lg hover:bg-purple-700">Add to Cart</button>
                     </div>
                     </div>
                 </div>
             </div>
-            
+            <div className="w-full py-16 flex justify-center mt-10">
+                <Link href={'/shop'} className="bg-purple-800 w-2/5 p-3 rounded-full hover:bg-purple-700 text-white text-center">See More</Link>
+            </div>
           </div>
         </section>
-        <div className="py-20 bg-zinc-900"></div>
+        {/* <div className="py-20 bg-zinc-900"></div> */}
         <section className="bg-zinc-900 py-20 w-full  shadow-lg shadow-zinc-100 border-b border-zinc-800">
         <div className="w-full mx-auto px-4 sm:px-6 lg:px-8">
             <div className="md:flex md:flex-wrap md:-mx-4">

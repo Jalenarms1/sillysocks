@@ -11,10 +11,11 @@ import { useRouter } from 'next/router';
 export default function Navbar() {
 
     const router = useRouter();
-    const [showMenu, setShowMenu] = useState<boolean>(true)
+    const [showMenu, setShowMenu] = useState<boolean>(false)
     const [isOpen, setIsOpen] = useState(false);
-    const [windowWidth, setWindowWidth] = useState<number>(648)
-
+    const [windowWidth, setWindowWidth] = useState<number>(0)
+    console.log(windowWidth);
+    
 
     const handleShowMenu = () => {
         setShowMenu(!showMenu)
@@ -22,6 +23,9 @@ export default function Navbar() {
 
 
     useEffect(() => {
+     
+      
+        setWindowWidth(window.innerWidth)
         const handleResize = () => {
           if (window.innerWidth > 648) {
             setShowMenu(true);
@@ -49,7 +53,7 @@ export default function Navbar() {
               </div>
 
                 
-              {showMenu && <div className="flex max-sm:flex-col max-sm:items-start  items-center justify-center gap-8 font-semibold max-sm:hidden" >
+              {<div className="flex max-sm:flex-col max-sm:items-start  items-center justify-center gap-8 font-semibold max-sm:hidden" >
                 <Link className={`text-purple-200 ${router.pathname === '/' ? 'border-b border-b-purple-200' : ''} hover:text-purple-400 nav-options max-sm:border-b max-sm:border-zinc-600 w-full`} href={'/'}>
                     Home
 
@@ -69,20 +73,20 @@ export default function Navbar() {
 
                 
                 
-              {showMenu && <div className="flex max-sm:flex-col max-sm:items-start  items-center justify-center font-semibold gap-5 max-sm:w-full" >
-                {windowWidth < 648 && <div className='flex flex-col gap-5 w-full mt-2'>
-                  <Link className="text-purple-500 hover:text-purple-700 nav-options max-sm:border-b max-sm:border-zinc-600 w-full" href={'/'}>
+              {<div className="flex max-sm:flex-col max-sm:items-start  items-center justify-center font-semibold gap-5 max-sm:w-full" >
+                {windowWidth < 648 && showMenu && <div className='flex flex-col gap-5 w-full mt-2'>
+                  <Link className="text-purple-200 hover:text-purple-700 nav-options max-sm:border-b max-sm:border-zinc-600 w-full" href={'/'}>
                       Home
 
                   </Link>
-                  <Link className="text-purple-500 hover:text-purple-700 nav-options max-sm:border-b max-sm:border-zinc-600 w-full" href={'/shop'}>
+                  <Link className="text-purple-200 hover:text-purple-700 nav-options max-sm:border-b max-sm:border-zinc-600 w-full" href={'/shop'}>
                       Shop
 
                   </Link> 
-                  <a className="text-purple-500 hover:text-purple-700 nav-options max-sm:border-b max-sm:border-zinc-600 w-full" href="#">Login</a>
+                  <a className="text-purple-200 hover:text-purple-700 nav-options max-sm:border-b max-sm:border-zinc-600 w-full" href="#">Login</a>
 
                 </div>}
-                <button onClick={() => setIsOpen(!isOpen)} className="text-yellow-400 flex items-center gap-1 hover:text-yellow-600 nav-options max-sm:border-b max-sm:border-zinc-600 w-full" >
+                <button onClick={() => setIsOpen(!isOpen)} className="text-yellow-400 flex items-center gap-1 max-sm:pt-10 hover:text-yellow-600 nav-options w-full justify-end" >
                     <p>Cart</p>
                     <BsCart4  />
 
