@@ -40,9 +40,9 @@ export default function Navbar() {
   return (
     <nav className="bg-zinc-900 shadow-sm shadow-zinc-800">
         <div className=" py-3 w-full">
-            <div className="flex items-center justify-between w-full px-10 max-sm:px-4 max-sm:flex-col max-sm:items-start max-sm:justify-center">
+            <div className="flex items-center justify-between w-full px-8 max-sm:px-4 max-sm:flex-col max-sm:items-start max-sm:justify-center">
               <div className="flex justify-between max-sm:w-full">
-                <a className="text-2xl font-bold text-yellow-300 hover:text-yellow-600" href="#">Silly Socks</a>
+                <a className="text-3xl font-bold text-yellow-300 hover:text-yellow-600" href="#">Silly Socks</a>
                 <button onClick={handleShowMenu} className="bg-transparent border-0 sm:hidden active:shadow-md active:shadow-zinc-700">
                     <Image src={`/images/menu.png`} alt="menu" className="w-10" width={20} height={20} id="show-menu-btn" />
                 </button>
@@ -96,7 +96,7 @@ export default function Navbar() {
             
             {/* Cart Slideout */}
             <div
-                className={`fixed inset-y-0 right-0 max-w-xs w-full bg-zinc-500 shadow-lg overflow-hidden transform transition duration-300 ease-in-out ${
+                className={`fixed z-10 inset-y-0 right-0 max-w-xs w-full bg-zinc-500 shadow-lg overflow-hidden transform transition duration-300 ease-in-out ${
                 isOpen ? "translate-x-0" : "translate-x-full"
                 }`}>
                 <div className="p-4">
