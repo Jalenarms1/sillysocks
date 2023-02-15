@@ -7,7 +7,7 @@ export default function Footer() {
               <div className="flex flex-wrap">
                 <div className="w-full md:w-1/3 mb-4 md:mb-0">
                     <h2 className="text-2xl text-purple-200 font-bold mb-2">Contact Us</h2>
-                    <p className="mb-2">Email: sillysocksandmore@gmail.com</p>
+                    <p className="mb-2">sillysocksandmore@gmail.com</p>
                     
                 </div>
                 <div className="w-full md:w-1/3 mb-4 md:mb-0">

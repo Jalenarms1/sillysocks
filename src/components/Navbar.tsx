@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react'
 import {BsCart4} from 'react-icons/bs/index'
 import {BsFillCartXFill} from 'react-icons/bs/index'
 import { useRouter } from 'next/router';
+import Cart from './Cart'
 
 
 
@@ -99,7 +100,7 @@ export default function Navbar() {
             {/* Cart Icon Tab
             
             {/* Cart Slideout */}
-            <div
+            {/* <div
                 className={`fixed z-10 inset-y-0 right-0 max-w-xs w-full bg-zinc-500 shadow-lg overflow-hidden transform transition duration-300 ease-in-out ${
                 isOpen ? "translate-x-0" : "translate-x-full"
                 }`}>
@@ -107,9 +108,10 @@ export default function Navbar() {
                     <BsFillCartXFill
                     className="text-5xl text-yellow-300 hover:text-yellow-500 flex items-center justify-center cursor-pointer"
                     onClick={() => setIsOpen(!isOpen)}/>
-                    {/* Cart items here */}
+                    
                 </div>
-            </div>
+            </div> */}
+            <Cart isOpen={isOpen} setIsOpen={setIsOpen}/>
         </div>
         </div>
     </nav>

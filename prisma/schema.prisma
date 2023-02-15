@@ -14,10 +14,28 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Example {
-  id        String   @id @default(cuid())
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+model Product {
+  id          String      @id @default(cuid())
+  name        String
+  description String
+  image       String
+  price       Float
+  quantity    Int
+  orderItem   orderItem[]
+}
+
+model Order {
+  id        String      @id @default(cuid())
+  total     Float
+  orderItem orderItem[]
+}
+
+model orderItem {
+  id        String  @id @default(cuid())
+  productId String
+  product   Product @relation(fields: [productId], references: [id])
+  orderId   String
+  order     Order   @relation(fields: [orderId], references: [id])
 }
 
 // Necessary for Next auth
