@@ -11,6 +11,7 @@ import Cart from './Cart'
 
 export default function Navbar({cart}: {cart: {
   cart: any[];
+  clearCart: () => void;
   getTotal: () => any;
   addOne: (id: string) => void;
   subtractOne: (id: string) => void

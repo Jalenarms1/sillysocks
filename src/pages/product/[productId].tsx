@@ -20,7 +20,7 @@ export default function Product() {
             <div className=" pl-8 py-8">
                 <Image width={250} height={250} className="w-96 mx-auto object-cover object-center rounded-lg shadow-sm shadow-purple-900" src={data?.image as string} alt="Product image" />
             </div>
-            <div className="sm:w-1/2 py-8 pr-8">
+            <div className="lg:w-2/5 md:w-1/2 py-8 pr-8">
                 <h1 className="text-4xl font-bold text-purple-300 mb-2">{data?.name}</h1>
                 <p className="text-lg text-gray-500 mb-4">{data?.description}</p>
                 <div className="flex justify-between items-center mb-4">

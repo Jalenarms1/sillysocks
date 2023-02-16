@@ -15,7 +15,7 @@ const MyApp: AppType<{ session: Session | null }> = ({
   Component,
   pageProps: { session, ...pageProps },
 }) => {
-  const {cart, removeFromCart, addToCart, addOne, subtractOne, getTotal} = useSetGetLocalStorage()
+  const {cart, removeFromCart, addToCart, addOne, subtractOne, getTotal, clearCart} = useSetGetLocalStorage()
 
 
  
@@ -23,7 +23,7 @@ const MyApp: AppType<{ session: Session | null }> = ({
   return (
     
         <SessionProvider session={session}>
-          <Navbar cart={{cart, addToCart, removeFromCart, addOne, subtractOne, getTotal}} />
+          <Navbar cart={{cart, addToCart, removeFromCart, addOne, subtractOne, getTotal, clearCart}} />
           <main className="min-h-screen bg-zinc-900">
             <Component {...pageProps} cart={{cart, addToCart, removeFromCart, addOne}} />
 

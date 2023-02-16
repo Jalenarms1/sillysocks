@@ -117,5 +117,10 @@ export const useSetGetLocalStorage = () => {
     const getTotal = () => {
         return cart.reduce((obj:any, acc:any) => acc + obj.total, 0)
     }
-    return {addToCart, cart, removeFromCart, setCart, inCart, addOne, subtractOne, getTotal}
+
+    const clearCart = () => {
+        setCart([])
+    }
+
+    return {addToCart, cart, removeFromCart, setCart, inCart, addOne, subtractOne, getTotal, clearCart}
 }

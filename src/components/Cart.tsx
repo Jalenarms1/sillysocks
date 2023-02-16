@@ -8,15 +8,19 @@ import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
 import {GrFormAdd} from 'react-icons/gr/index'
 import {GrFormSubtract} from 'react-icons/gr/index'
 import { useSetGetLocalStorage } from '../hooks/useLocalStorage'
+import { trpc } from '../utils/trpc'
 
 export default function Cart({isOpen, setIsOpen, cart}: {isOpen: boolean, setIsOpen: React.Dispatch<React.SetStateAction<boolean>>, cart: {
     cart: any[];
     getTotal: () => any
+    clearCart: () => void;
     addOne: (id: string) => void;
     subtractOne: (id: string) => void;
     addToCart: (id: string, name: string, image: string, description: string, price: number) => void;
     removeFromCart: (id: string) => void;
 }}) {
+
+    const sendMail = trpc.dbRouter.send.useMutation()
     
     // const {addOne, subtractOne} = useSetGetLocalStorage()
     const createOrder = (data:any, actions:any,) => {
@@ -34,7 +38,13 @@ export default function Cart({isOpen, setIsOpen, cart}: {isOpen: boolean, setIsO
 
     const onApprove = (data:any, actions:any) => {
         return actions.order.capture().then((details:any) => {
+            // sendMail.mutate({id: "232342309"})
+            // order id - details.id
+            // order email address - details.payer.email_address
+            // order name - details.payer.name.given_name
             console.log(details);
+            cart.clearCart()
+            
         });
     };
 
