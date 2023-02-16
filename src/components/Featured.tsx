@@ -1,0 +1,36 @@
+import Image from 'next/image'
+import React from 'react'
+import { trpc } from '../utils/trpc'
+
+export default function Featured( {cart}: {cart: {
+    cart: any[];
+    addToCart: (id: string, name: string, image: string, description: string, price: number) => void;
+    removeFromCart: (id: string) => void;
+    addOne: (id: string) => void;
+}}) {
+
+  const {data, isLoading} = trpc.dbRouter.getProducts.useQuery()
+
+
+  return (
+    <div className="w-full px-1 flex justify-center flex-wrap max-sm:flex-col gap-4 max-sm:gap-6">
+        {data?.slice(0,4).map((item: any, index: number) => (
+            <div key={index} className="bg-zinc-900 relative pb-20 md:w-[42%] lg:w-[22%] shadow-md shadow-purple-300 rounded-lg overflow-hidden card  max-sm:w-3/4 max-sm:mx-auto">
+                <Image width={200} height={200} className="w-full h-64 object-cover object-center" src={item.image} alt="Product image" />
+                <div className="p-4 pb-10">
+                    <h2 className="text-purple-300 font-bold text-2xl tracking-tight mb-2">{item.name}</h2>
+                    <p className="text-purple-300 text-base">{item.description}</p>
+                    <div className="mt-2 flex flex-col absolute bottom-5 w-full">
+                        <div className=" pb-5">
+                            <span className="text-purple-300 font-bold text-xl">{item.price}</span>
+                            <span className="text-gray-600 text-sm ml-2 line-through">$69.99</span>
+                        </div>
+                        <button onClick={() => cart.addToCart(item.id, item.name, item.image, item.description, item.price)} className="py-2 px-4 w-1/2 bg-purple-800 hover:bg-purple-700 text-white rounded-lg ">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+        )
+        )}
+    </div>
+  )
+}

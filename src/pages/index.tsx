@@ -8,10 +8,16 @@ import { trpc } from "../utils/trpc";
 import Image from "next/image";
 import { useState } from "react";
 import Navbar from "../components/Navbar";
+import Featured from "../components/Featured";
 
-const Home: NextPage = () => {
+const Home = ({cart}: {cart: {
+    cart: any;
+    addToCart: (id: string, name: string, image: string, description: string, price: number) => void;
+    removeFromCart: (id: string) => void;
+    addOne: (id: string) => void;
+}}) => {
   const [showMenu, setShowMenu] = useState<boolean>(true)
-  const {data, isLoading} = trpc.dbRouter.getProducts.useQuery()
+    
 
 
   const handleShowMenu = () => {
@@ -72,84 +78,7 @@ const Home: NextPage = () => {
             </div>
 
            
-            <div className="w-full px-1 flex justify-center flex-wrap max-sm:flex-col gap-4 max-sm:gap-6">
-            {data?.slice(0,4).map((item: any, index: number) => (
-                <div key={index} className="bg-zinc-900 relative pb-20 md:w-[42%] lg:w-[22%] shadow-md shadow-purple-300 rounded-lg overflow-hidden card  max-sm:w-3/4 max-sm:mx-auto">
-                    <Image width={200} height={200} className="w-full h-64 object-cover object-center" src={item.image} alt="Product image" />
-                    <div className="p-4 pb-10">
-                        <h2 className="text-purple-300 font-bold text-2xl tracking-tight mb-2">{item.name}</h2>
-                        <p className="text-purple-300 text-base">{item.description}</p>
-                        <div className="mt-2 flex flex-col absolute bottom-5 w-full">
-                            <div className=" pb-5">
-                                <span className="text-purple-300 font-bold text-xl">{item.price}</span>
-                                <span className="text-gray-600 text-sm ml-2 line-through">$69.99</span>
-                            </div>
-                            <button className="py-2 px-4 w-1/2 bg-purple-800 hover:bg-purple-700 text-white rounded-lg ">Add to Cart</button>
-                        </div>
-                    </div>
-                </div>
-            )
-            )}
-                {/* <div className="bg-zinc-900 md:w-[42%] lg:w-[22%] shadow-md shadow-purple-300 rounded-lg overflow-hidden card  max-sm:w-3/4 max-sm:mx-auto">
-                    <Image width={200} height={200} className="w-full h-64 object-cover object-center" src="/images/model-sock.png" alt="Product image" />
-                    <div className="p-4">
-                    <h2 className="text-purple-300 font-bold text-2xl tracking-tight mb-2">Product Title</h2>
-                    <p className="text-purple-300 text-base">Product description goes here. This is a longer description for the product, with more details and specifications.</p>
-                    <div className="mt-3">
-                        <span className="text-purple-300 font-bold text-xl">$49.99</span>
-                        <span className="text-gray-600 text-sm ml-2 line-through">$69.99</span>
-                    </div>
-                    <div className="mt-2">
-                        <button className="py-2 px-4 bg-purple-800 hover:bg-purple-700 text-white rounded-lg ">Add to Cart</button>
-                    </div>
-                    </div>
-                </div>
-                <div className="bg-zinc-900 md:w-[42%] lg:w-[22%] shadow-md shadow-purple-300 rounded-lg overflow-hidden card max-sm:w-3/4 max-sm:mx-auto">
-                    <Image width={200} height={200} className="w-full h-64 object-cover object-center" src="/images/model-sock.png" alt="Product image" />
-
-                    <div className="p-4">
-                    <h2 className="text-purple-300 font-bold text-2xl tracking-tight mb-2">Product Title</h2>
-                    <p className="text-purple-300 text-base">Product description goes here. This is a longer description for the product, with more details and specifications.</p>
-                    <div className="mt-3">
-                        <span className="text-purple-300 font-bold text-xl">$49.99</span>
-                        <span className="text-gray-600 text-sm ml-2 line-through">$69.99</span>
-                    </div>
-                    <div className="mt-2">
-                        <button className="py-2 px-4 bg-purple-800 text-white rounded-lg hover:bg-purple-700">Add to Cart</button>
-                    </div>
-                    </div>
-                </div>
-                <div className="bg-zinc-900 md:w-[42%] lg:w-[22%] shadow-md shadow-purple-300 rounded-lg overflow-hidden card max-sm:w-3/4 max-sm:mx-auto">
-                    <Image width={200} height={200} className="w-full h-64 object-cover object-center" src="/images/model-sock.png" alt="Product image" />
-
-                    <div className="p-4">
-                    <h2 className="text-purple-300 font-bold text-2xl tracking-tight mb-2">Product Title</h2>
-                    <p className="text-purple-300 text-base">Product description goes here. This is a longer description for the product, with more details and specifications.</p>
-                    <div className="mt-3">
-                        <span className="text-purple-300 font-bold text-xl">$49.99</span>
-                        <span className="text-gray-600 text-sm ml-2 line-through">$69.99</span>
-                    </div>
-                    <div className="mt-2">
-                        <button className="py-2 px-4 bg-purple-800 text-white rounded-lg hover:bg-purple-700">Add to Cart</button>
-                    </div>
-                    </div>
-                </div>
-                <div className="bg-zinc-900 md:w-[42%] lg:w-[22%] shadow-md shadow-purple-300 rounded-lg overflow-hidden card max-sm:w-3/4 max-sm:mx-auto">
-                    <Image width={200} height={200} className="w-full h-64 object-cover object-center" src="/images/model-sock.png" alt="Product image" />
-
-                    <div className="p-4">
-                    <h2 className="text-purple-300 font-bold text-2xl tracking-tight mb-2">Product Title</h2>
-                    <p className="text-purple-300 text-base">Product description goes here. This is a longer description for the product, with more details and specifications.</p>
-                    <div className="mt-3">
-                        <span className="text-purple-600 font-bold text-xl">$49.99</span>
-                        <span className="text-gray-600 text-sm ml-2 line-through">$69.99</span>
-                    </div>
-                    <div className="mt-2">
-                        <button className="py-2 px-4 bg-purple-800 text-white rounded-lg hover:bg-purple-700">Add to Cart</button>
-                    </div>
-                    </div>
-                </div> */}
-            </div>
+            <Featured cart={cart} />
             <div className="w-full py-16 flex justify-center mt-10">
                 <Link href={'/shop'} className="bg-purple-800 w-2/5 p-3 rounded-full hover:bg-purple-700 text-white text-center">See More</Link>
             </div>
