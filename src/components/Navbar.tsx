@@ -9,7 +9,14 @@ import Cart from './Cart'
 
 
 
-export default function Navbar() {
+export default function Navbar({cart}: {cart: {
+  cart: any[];
+  getTotal: () => any;
+  addOne: (id: string) => void;
+  subtractOne: (id: string) => void
+  addToCart: (id: string, name: string, image: string, description: string, price: number) => void;
+  removeFromCart: (id: string) => void;
+}}) {
 
     const router = useRouter();
     const [showMenu, setShowMenu] = useState<boolean>(false)
@@ -64,7 +71,7 @@ export default function Navbar() {
 
                 </Link>
                 {/* <a className="text-purple-500 hover:text-purple-700 nav-options max-sm:border-b max-sm:border-zinc-600 w-full" href="#">Cart</a> */}
-                <a className="text-purple-200 hover:text-purple-400 nav-options max-sm:border-b max-sm:border-zinc-600 w-full" href="#">Login</a>
+                {/* <a className="text-purple-200 hover:text-purple-400 nav-options max-sm:border-b max-sm:border-zinc-600 w-full" href="#">Login</a> */}
                 {/* <Link className="text-purple-500 flex items-center gap-1 hover:text-purple-700 nav-options max-sm:border-b max-sm:border-zinc-600 w-full" href={'/shop'}>
                     <p>Cart</p>
                     <BsCart4 />
@@ -84,7 +91,7 @@ export default function Navbar() {
                       Shop
 
                   </Link> 
-                  <a className="text-purple-200 hover:text-purple-700 nav-options max-sm:border-b max-sm:border-zinc-600 w-full" href="#">Login</a>
+                  {/* <a className="text-purple-200 hover:text-purple-700 nav-options max-sm:border-b max-sm:border-zinc-600 w-full" href="#">Login</a> */}
 
                 </div>}
                 <button onClick={() => setIsOpen(!isOpen)} className="text-yellow-400 flex items-center gap-1 max-sm:pt-10 hover:text-yellow-600 nav-options w-full justify-end" >
@@ -111,9 +118,9 @@ export default function Navbar() {
                     
                 </div>
             </div> */}
-            <Cart isOpen={isOpen} setIsOpen={setIsOpen}/>
-        </div>
-        </div>
+              <Cart isOpen={isOpen} setIsOpen={setIsOpen} cart={cart}/>
+            </div>
+          </div>
     </nav>
   )
 }

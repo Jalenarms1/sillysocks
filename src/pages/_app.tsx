@@ -9,57 +9,29 @@ import { trpc } from "../utils/trpc";
 import "../styles/globals.css";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import { useSetGetLocalStorage } from "../hooks/useLocalStorage";
 
 const MyApp: AppType<{ session: Session | null }> = ({
   Component,
   pageProps: { session, ...pageProps },
 }) => {
-  const [isPageLoading, setIsPageLoading] = useState(false);
-  const router = useRouter();
-  useEffect(() => {
-    const handleStart = () => setIsPageLoading(true);
-    const handleComplete = () => setIsPageLoading(false);
+  const {cart, removeFromCart, addToCart, addOne, subtractOne, getTotal} = useSetGetLocalStorage()
 
-    router.events.on('routeChangeStart', handleStart);
-    router.events.on('routeChangeComplete', handleComplete);
-    router.events.on('routeChangeError', handleComplete);
 
-    return () => {
-      router.events.off('routeChangeStart', handleStart);
-      router.events.off('routeChangeComplete', handleComplete);
-      router.events.off('routeChangeError', handleComplete);
-    };
-  }, [router]);
-
-  if(isPageLoading) {
-    return (
-      <div className="h-screen bg-zinc-900">
-
-      </div>
-    )
-  }
+ 
 
   return (
-    <AnimatePresence exitBeforeEnter>
-      <motion.div
-          key={router.route}
-          initial={{ opacity: .9 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 1 }}
-        >
+    
         <SessionProvider session={session}>
-          <Navbar />
+          <Navbar cart={{cart, addToCart, removeFromCart, addOne, subtractOne, getTotal}} />
           <main className="min-h-screen bg-zinc-900">
-            <Component {...pageProps} />
+            <Component {...pageProps} cart={{cart, addToCart, removeFromCart, addOne}} />
 
           </main>
           <Footer />
         </SessionProvider>
 
-        </motion.div>
-
-    </AnimatePresence>
+        
   );
 };
 

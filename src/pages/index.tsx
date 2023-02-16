@@ -11,6 +11,8 @@ import Navbar from "../components/Navbar";
 
 const Home: NextPage = () => {
   const [showMenu, setShowMenu] = useState<boolean>(true)
+  const {data, isLoading} = trpc.dbRouter.getProducts.useQuery()
+
 
   const handleShowMenu = () => {
     setShowMenu(!showMenu)
@@ -71,7 +73,24 @@ const Home: NextPage = () => {
 
            
             <div className="w-full px-1 flex justify-center flex-wrap max-sm:flex-col gap-4 max-sm:gap-6">
-                <div className="bg-zinc-900 md:w-[42%] lg:w-[22%] shadow-md shadow-purple-300 rounded-lg overflow-hidden card  max-sm:w-3/4 max-sm:mx-auto">
+            {data?.slice(0,4).map((item: any, index: number) => (
+                <div key={index} className="bg-zinc-900 relative pb-20 md:w-[42%] lg:w-[22%] shadow-md shadow-purple-300 rounded-lg overflow-hidden card  max-sm:w-3/4 max-sm:mx-auto">
+                    <Image width={200} height={200} className="w-full h-64 object-cover object-center" src={item.image} alt="Product image" />
+                    <div className="p-4 pb-10">
+                        <h2 className="text-purple-300 font-bold text-2xl tracking-tight mb-2">{item.name}</h2>
+                        <p className="text-purple-300 text-base">{item.description}</p>
+                        <div className="mt-2 flex flex-col absolute bottom-5 w-full">
+                            <div className=" pb-5">
+                                <span className="text-purple-300 font-bold text-xl">{item.price}</span>
+                                <span className="text-gray-600 text-sm ml-2 line-through">$69.99</span>
+                            </div>
+                            <button className="py-2 px-4 w-1/2 bg-purple-800 hover:bg-purple-700 text-white rounded-lg ">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+            )
+            )}
+                {/* <div className="bg-zinc-900 md:w-[42%] lg:w-[22%] shadow-md shadow-purple-300 rounded-lg overflow-hidden card  max-sm:w-3/4 max-sm:mx-auto">
                     <Image width={200} height={200} className="w-full h-64 object-cover object-center" src="/images/model-sock.png" alt="Product image" />
                     <div className="p-4">
                     <h2 className="text-purple-300 font-bold text-2xl tracking-tight mb-2">Product Title</h2>
@@ -129,7 +148,7 @@ const Home: NextPage = () => {
                         <button className="py-2 px-4 bg-purple-800 text-white rounded-lg hover:bg-purple-700">Add to Cart</button>
                     </div>
                     </div>
-                </div>
+                </div> */}
             </div>
             <div className="w-full py-16 flex justify-center mt-10">
                 <Link href={'/shop'} className="bg-purple-800 w-2/5 p-3 rounded-full hover:bg-purple-700 text-white text-center">See More</Link>
@@ -142,8 +161,8 @@ const Home: NextPage = () => {
             <div className="md:flex md:flex-wrap md:-mx-4">
                 <div className="md:w-1/2 md:px-4">
                     <h2 className="text-3xl font-extrabold text-zinc-100 mb-4">Our Mission</h2>
-                    <p className="text-lg text-zinc-100 mb-6">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor. Cras elementum ultrices diam.</p>
-                    <p className="text-lg text-zinc-100 mb-6">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor. Cras elementum ultrices diam.</p>
+                    <p className="text-lg text-zinc-100 mb-6">At Silly Socks and More, we believe that life is too short to wear boring socks. Our mission is to bring a little bit of fun and quirkiness to your everyday wardrobe with our wide selection of colorful, wacky, and whimsical socks. We want to put a smile on your face and help you express your unique personality through your feet.</p>
+                    <p className="text-lg text-zinc-100 mb-6"> From funky patterns to cute animal designs, we've got something for everyone. But we're not just about silly socks – we also offer a variety of other fun accessories and gifts to brighten up your day. So, come on in and join us on our mission to spread a little bit of joy, one pair of silly socks at a time!</p>
                 </div>
                 <div className="md:w-1/2 md:px-4 flex justify-center items-center rounded">
                     <Image width={300} height={300} src="/images/socks-img.png" alt="socks" className="w-2/4 max-sm:w-3/4 max-sm:mt-5 rounded shadow-sm shadow-purple-800" />

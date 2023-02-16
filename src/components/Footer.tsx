@@ -31,7 +31,7 @@ export default function Footer() {
               </div>
               <hr className="border-gray-500 my-8" />
               <div className="text-sm text-gray-500 text-center">
-              &copy; 2023 My Ecommerce Site. All rights reserved.
+              &copy; 2023 Silly Socks and More. All rights reserved.
                 </div>
         </div>
     </footer>

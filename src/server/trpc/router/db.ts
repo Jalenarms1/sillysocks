@@ -2,21 +2,22 @@ import { z } from "zod";
 
 import { router, publicProcedure } from "../trpc";
 
-const createProductInputSchema = z.object({
-    name: z.string(),
-    description: z.string(),
-    quantity: z.number(),
-    price: z.number(),
-    image: z.string()
-});
+export const dbRouter = router({
+  getProducts: publicProcedure
+    .query(async ({ctx: {prisma} }) => {
+        const products = await prisma.product.findMany();
 
-export const adminRouter = router({
-  addProduct: publicProcedure
-    .input(createProductInputSchema)
-    .mutation(async ({ input: data, ctx: {prisma} }) => {
-        const product = await prisma.product.create({ data });
-
-        return product
+        return products
     }),
-  
+  getProduct: publicProcedure
+    .input(z.object({id: z.string()}))
+    .query(async ({ctx: {prisma}, input: {id} }) => {
+      const product = await prisma.product.findUnique({
+        where: {
+            id
+        }
+      });
+
+      return product
+  }),
 });
