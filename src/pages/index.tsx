@@ -162,7 +162,7 @@ const Home: NextPage = () => {
                 <div className="md:w-1/2 md:px-4">
                     <h2 className="text-3xl font-extrabold text-zinc-100 mb-4">Our Mission</h2>
                     <p className="text-lg text-zinc-100 mb-6">At Silly Socks and More, we believe that life is too short to wear boring socks. Our mission is to bring a little bit of fun and quirkiness to your everyday wardrobe with our wide selection of colorful, wacky, and whimsical socks. We want to put a smile on your face and help you express your unique personality through your feet.</p>
-                    <p className="text-lg text-zinc-100 mb-6"> From funky patterns to cute animal designs, we've got something for everyone. But we're not just about silly socks – we also offer a variety of other fun accessories and gifts to brighten up your day. So, come on in and join us on our mission to spread a little bit of joy, one pair of silly socks at a time!</p>
+                    <p className="text-lg text-zinc-100 mb-6"> From funky patterns to cute animal designs, we&apos;ve got something for everyone. But we&apos;re not just about silly socks – we also offer a variety of other fun accessories and gifts to brighten up your day. So, come on in and join us on our mission to spread a little bit of joy, one pair of silly socks at a time!</p>
                 </div>
                 <div className="md:w-1/2 md:px-4 flex justify-center items-center rounded">
                     <Image width={300} height={300} src="/images/socks-img.png" alt="socks" className="w-2/4 max-sm:w-3/4 max-sm:mt-5 rounded shadow-sm shadow-purple-800" />

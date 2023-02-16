@@ -267,7 +267,7 @@ export default function Shop( {cart}: {cart: {
                         <div className="md:w-1/2 md:px-4">
                             <h2 className="text-3xl font-extrabold text-zinc-100 mb-4">Shipping</h2>
                             <p className="text-lg text-zinc-100 mb-6">Our shipping policy states that all orders will be charged a flat shipping fee of $3. Shipping times will typically range between 3-5 business days from the time the order is placed. </p>
-                            <p className="text-lg text-zinc-100 mb-6">Please note that this timeframe may vary depending on the destination of the shipment and any unforeseen circumstances that may affect the shipping process. We strive to get your order to you as quickly as possible and will provide tracking information once your order has shipped. If you have any questions or concerns about your shipment, please don't hesitate to contact our customer service team.</p>
+                            <p className="text-lg text-zinc-100 mb-6">Please note that this timeframe may vary depending on the destination of the shipment and any unforeseen circumstances that may affect the shipping process. We strive to get your order to you as quickly as possible and will provide tracking information once your order has shipped. If you have any questions or concerns about your shipment, please don&apos;t hesitate to contact our customer service team.</p>
                         </div>
                         <div className="md:w-1/2 md:px-4 flex justify-center items-center rounded">
                             <Image width={300} height={300} src="/images/socks-img.png" alt="socks" className="w-2/4 max-sm:w-3/4 max-sm:mt-5 rounded shadow-sm shadow-purple-800" />
