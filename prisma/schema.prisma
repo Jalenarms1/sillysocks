@@ -25,9 +25,13 @@ model Product {
 }
 
 model Order {
-  id        String      @id @default(cuid())
-  total     Float
-  orderItem orderItem[]
+  id              String      @id
+  total           Float
+  shippingAddress String
+  emailAddress    String
+  customerName    String
+  orderItem       orderItem[]
+  createdAt       DateTime    @default(now())
 }
 
 model orderItem {
