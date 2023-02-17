@@ -21,7 +21,7 @@ export default function Shop( {cart}: {cart: {
 
   return (
     <div className='pt-2'>
-        <Image width={250} height={250} src={'/images/sslogo.jpeg'} alt={"logo"} className="bg-blend-multiply w-96 max-sm:w-4/5 max-sm:mx-auto m-5 h-48 rounded-lg shadow-md shadow-zinc-600" />
+        <Image width={250} height={250} src={'/images/sslogo.jpeg'} alt={"logo"} className="bg-blend-multiply w-96 max-sm:w-4/5 max-sm:mx-auto m-5 h-48 rounded-lg shadow-sm shadow-zinc-700" />
         <section className="bg-zinc-900  flex max-sm:flex-col justify-between items-center max-sm:p-4 max-sm:items-start">
             <div className="max-sm:p-4 sm:px-8">
                 <h2 className="text-purple-200 text-3xl ">Browse our Products</h2>
