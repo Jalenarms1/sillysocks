@@ -7,7 +7,7 @@ export default function Footer() {
               <div className="flex flex-wrap">
                 <div className="w-full md:w-1/3 mb-4 md:mb-0">
                     <h2 className="text-2xl text-purple-200 font-bold mb-2">Contact Us</h2>
-                    <p className="mb-2">sillysocksandmore@gmail.com</p>
+                    <p className="mb-2">sillysocksandmore@sillysocksandmore.com</p>
                     
                 </div>
                 <div className="w-full md:w-1/3 mb-4 md:mb-0">
@@ -19,8 +19,8 @@ export default function Footer() {
                     </ul>
                 </div>
                 <div className="w-full md:w-1/3 mb-4 md:mb-0">
-                    <h2 className="text-2xl text-purple-200 font-bold mb-2">Newsletter</h2>
-                    <p className="mb-2">Sign up to receive the latest news and updates.</p>
+                    <h2 className="text-2xl text-purple-200 font-bold mb-2">Comments</h2>
+                    <p className="mb-2">Send a quick comment or suggestion</p>
                     <form>
                     <div className="flex items-center">
                         <input type="email" className="bg-gray-800 rounded-l-md py-2 px-4 text-gray-100 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent" placeholder="Enter your email" />

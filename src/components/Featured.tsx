@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import Link from 'next/link';
 import React from 'react'
 import { trpc } from '../utils/trpc'
 
@@ -15,8 +16,10 @@ export default function Featured( {cart}: {cart: {
   return (
     <div className="w-full px-1 flex justify-center flex-wrap max-sm:flex-col gap-4 max-sm:gap-6">
         {data?.slice(0,4).map((item: any, index: number) => (
-            <div key={index} className="bg-zinc-900 relative pb-20 md:w-[42%] lg:w-[22%] shadow-md shadow-purple-300 rounded-lg overflow-hidden card  max-sm:w-3/4 max-sm:mx-auto">
-                <Image width={200} height={200} className="w-full h-64 object-cover object-center" src={item.image} alt="Product image" />
+            <div  key={index} className="bg-zinc-900 relative pb-20 md:w-[42%] lg:w-[22%] shadow-md shadow-purple-300 rounded-lg overflow-hidden card  max-sm:w-3/4 max-sm:mx-auto">
+                <Link href={`/product/${item.id}`}>
+                    <Image width={200} height={200} className="w-full h-64 object-cover object-center" src={item.image} alt="Product image" />
+                </Link>
                 <div className="p-4 pb-10">
                     <h2 className="text-purple-300 font-bold text-2xl tracking-tight mb-2">{item.name}</h2>
                     <p className="text-purple-300 text-base">{item.description}</p>
