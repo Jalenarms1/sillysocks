@@ -20,11 +20,12 @@ export default function Shop( {cart}: {cart: {
     }
 
   return (
-    <>
-        <section className="bg-zinc-900 py-4 border-t border-zinc-800 flex max-sm:flex-col justify-between items-center pt-20 max-sm:p-4 max-sm:items-start">
+    <div className='pt-2'>
+        <Image width={250} height={250} src={'/images/sslogo.jpeg'} alt={"logo"} className="bg-blend-multiply w-96 max-sm:w-4/5 max-sm:mx-auto m-5 h-48 rounded-lg shadow-md shadow-zinc-600" />
+        <section className="bg-zinc-900  flex max-sm:flex-col justify-between items-center max-sm:p-4 max-sm:items-start">
             <div className="max-sm:p-4 sm:px-8">
-                <h2 className="text-purple-200 text-xl ">Shop for Socks and More</h2>
-                <p className="mt-2 text-gray-600 text-sm">Find exactly what you are looking for with a quick search.</p>
+                <h2 className="text-purple-200 text-3xl ">Browse our Products</h2>
+                <p className="mt-2 text-gray-600 text-md">Find exactly what you are looking for with a quick search.</p>
             </div>
             <div className="p-4 pr-10 w-[30%] max-lg:w-[40%] max-sm:w-full relative">
                 <input type="text" placeholder='Search for a product' className='p-2 w-full rounded' />
@@ -33,10 +34,10 @@ export default function Shop( {cart}: {cart: {
         </section>
         <div className="flex flex-wrap min-w-screen-xl border-t border-zinc-800 mx-auto">
             
-            <div className="w-full p-4">
-                <div className="w-full px-1 flex justify-center flex-wrap max-sm:flex-col gap-4 max-sm:gap-6">
+            <div className="w-full py-4">
+                <div className="w-full flex pl-8 flex-wrap max-sm:flex-col gap-4 max-sm:gap-6">
                     {data?.map((item: any, index: number) => (
-                        <div key={index} className="bg-zinc-900 relative pb-20 md:w-[42%] lg:w-[22%] shadow-md shadow-purple-300 rounded-lg overflow-hidden card  max-sm:w-3/4 max-sm:mx-auto">
+                        <div key={index} className="bg-zinc-900 relative pb-20 md:w-[42%] lg:w-[23%] xl:w-[18%] shadow-md shadow-purple-300 rounded-lg overflow-hidden card  max-sm:w-3/4 max-sm:mx-auto">
                             <Link href={`/product/${item.id}`} className="w-full h-64">
                                 <Image width={250} height={250} className="w-full h-64 object-cover object-center" src={item.image} alt="Product image" />
                             
@@ -76,7 +77,7 @@ export default function Shop( {cart}: {cart: {
 
             
         </div>
-    </>
+    </div>
 
 
   )

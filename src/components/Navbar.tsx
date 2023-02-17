@@ -51,11 +51,12 @@ export default function Navbar({cart}: {cart: {
       }, []);
 
   return (
-    <nav className="bg-zinc-900 shadow-sm shadow-zinc-800">
+    <nav className="bg-zinc-900 shadow-sm shadow-zinc-800 border-b border-zinc-800">
         <div className=" py-3 w-full">
             <div className="flex items-center justify-between w-full px-8 max-sm:px-4 max-sm:flex-col max-sm:items-start max-sm:justify-center">
               <div className="flex justify-between max-sm:w-full">
                 <a className="text-3xl font-bold text-yellow-300 hover:text-yellow-600" href="#">Silly Socks</a>
+                {/* <Image width={250} height={250} src={'/images/sslogo.jpeg'} alt={"logo"} className="bg-blend-multiply w-20" /> */}
                 <button onClick={handleShowMenu} className="bg-transparent border-0 sm:hidden active:shadow-md active:shadow-zinc-700">
                     <Image src={`/images/menu.png`} alt="menu" className="w-10" width={20} height={20} id="show-menu-btn" />
                 </button>
@@ -84,22 +85,25 @@ export default function Navbar({cart}: {cart: {
                 
               {<div className="flex max-sm:flex-col max-sm:items-start  items-center justify-center font-semibold gap-5 max-sm:w-full" >
                 {windowWidth < 648 && showMenu && <div className='flex flex-col gap-5 w-full mt-2'>
-                  <Link className="text-purple-200 hover:text-purple-700 nav-options max-sm:border-b max-sm:border-zinc-600 w-full" href={'/'}>
+                  <Link className="text-purple-200 hover:text-purple-400 nav-options max-sm:border-b max-sm:border-zinc-600 w-full" href={'/'}>
                       Home
 
                   </Link>
-                  <Link className="text-purple-200 hover:text-purple-700 nav-options max-sm:border-b max-sm:border-zinc-600 w-full" href={'/shop'}>
+                  <Link className="text-purple-200 hover:text-purple-400 nav-options max-sm:border-b max-sm:border-zinc-600 w-full" href={'/shop'}>
                       Shop
 
                   </Link> 
-                  {/* <a className="text-purple-200 hover:text-purple-700 nav-options max-sm:border-b max-sm:border-zinc-600 w-full" href="#">Login</a> */}
+                  {/* <a className="text-purple-200 hover:text-purple-400 nav-options max-sm:border-b max-sm:border-zinc-600 w-full" href="#">Login</a> */}
 
                 </div>}
-                <button onClick={() => setIsOpen(!isOpen)} className="text-yellow-400 flex items-center gap-1 max-sm:pt-10 hover:text-yellow-600 nav-options w-full justify-end" >
-                    <p>Cart</p>
-                    <BsCart4  />
+                <div className="w-full">
+                  <button onClick={() => setIsOpen(!isOpen)} className="text-yellow-400 flex items-center gap-1 max-sm:pt-10 hover:text-yellow-600 nav-options w-fit" >
+                      <p>Cart</p>
+                      <BsCart4  />
 
-                </button>
+                  </button>
+
+                </div>
               </div>}
                     
             

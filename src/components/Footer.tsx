@@ -23,8 +23,8 @@ export default function Footer() {
                     <p className="mb-2">Send a quick comment or suggestion</p>
                     <form>
                     <div className="flex items-center">
-                        <input type="email" className="bg-gray-800 rounded-l-md py-2 px-4 text-gray-100 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent" placeholder="Enter your email" />
-                        <button type="submit" className="bg-purple-500 hover:bg-purple-600 rounded-r-md py-2 px-4 text-gray-100 font-bold">Subscribe</button>
+                        <input type="text" className="bg-gray-800 rounded-l-md py-2 px-4 text-gray-100 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent" placeholder="Enter your suggestion" />
+                        <button type="submit" className="bg-purple-500 hover:bg-purple-600 rounded-r-md py-2 px-4 text-gray-100 font-bold">Send</button>
                     </div>
                     </form>
                 </div>
