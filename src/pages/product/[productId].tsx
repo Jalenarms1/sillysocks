@@ -40,7 +40,7 @@ export default function Product({cart}: {cart: {
                         <span className="text-base text-gray-600 ml-2 line-through">$69.99</span>
                     </div>
                 </div>
-                <button onClick={() => cart.addToCart(data?.id)} className="py-2 px-4 w-full bg-purple-800 hover:bg-purple-900 text-white rounded-lg ">Add to Cart</button>
+                <button onClick={() => cart.addToCart(data?.id as string, data?.name as string, data?.image as string, data?.description as string, data?.price as number)} className="py-2 px-4 w-full bg-purple-800 hover:bg-purple-900 text-white rounded-lg ">Add to Cart</button>
                 <button className="py-2 px-4 my-2 w-full bg-yellow-500 hover:bg-yellow-600 text-black font-semibold rounded-lg ">Buy Now</button>
             </div>
         </div>
