@@ -35,7 +35,7 @@ export default function Shop( {cart}: {cart: {
         <div className="flex flex-wrap min-w-screen-xl border-t border-zinc-800 mx-auto">
             
             <div className="w-full py-4">
-                <div className="w-full flex pl-8 flex-wrap max-sm:flex-col gap-4 max-sm:gap-6">
+                <div className="w-full flex flex-wrap max-sm:flex-col gap-4 max-sm:gap-6">
                     {data?.map((item: any, index: number) => (
                         <div key={index} className="bg-zinc-900 relative pb-20 md:w-[42%] lg:w-[23%] xl:w-[18%] shadow-md shadow-purple-300 rounded-lg overflow-hidden card  max-sm:w-3/4 max-sm:mx-auto">
                             <Link href={`/product/${item.id}`} className="w-full h-64">
