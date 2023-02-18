@@ -94,7 +94,7 @@ const Home = ({cart}: {cart: {
                     <p className="text-lg text-zinc-100 mb-6"> From funky patterns to cute animal designs, we&apos;ve got something for everyone. But we&apos;re not just about silly socks – we also offer a variety of other fun accessories and gifts to brighten up your day. So, come on in and join us on our mission to spread a little bit of joy, one pair of silly socks at a time!</p>
                 </div>
                 <div className="md:w-1/2 md:px-4 flex justify-center items-center rounded">
-                    <Image width={300} height={300} src="/images/socks-img.png" alt="socks" className="w-2/4 max-sm:w-3/4 max-sm:mt-5 rounded shadow-sm shadow-purple-800" />
+                    <Image width={300} height={300} src="/images/socks-img.png" alt="socks" className="w-3/4 sm:w-3/5 md:w-4/5 lg:w-3/5 max-sm:mt-5 rounded shadow-sm shadow-purple-800" />
                 </div>
             </div>
         </div>

@@ -14,9 +14,10 @@ export default function Featured( {cart}: {cart: {
 
 
   return (
-    <div className="w-full px-1 flex justify-center flex-wrap max-sm:flex-col gap-4 max-sm:gap-6">
+    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-6 px-4 mx-auto">
+                
         {data?.slice(0,4).map((item: any, index: number) => (
-            <div  key={index} className="bg-zinc-900 relative pb-20 md:w-[42%] lg:w-[22%] shadow-md shadow-purple-300 rounded-lg overflow-hidden card  max-sm:w-3/4 max-sm:mx-auto">
+            <div  key={index} className="bg-zinc-900 relative pb-20 shadow-md shadow-purple-300 hover:shadow-purple-600 rounded-lg overflow-hidden card   w-full max-sm:mx-auto">
                 <Link href={`/product/${item.id}`}>
                     <Image width={200} height={200} className="w-full h-64 object-cover object-center" src={item.image} alt="Product image" />
                 </Link>

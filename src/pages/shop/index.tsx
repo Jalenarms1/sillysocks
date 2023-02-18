@@ -29,7 +29,7 @@ export default function Shop( {cart}: {cart: {
             </div>
             <div className="p-4 max-sm:p-1 pr-10 w-[30%] max-lg:w-[40%] max-sm:w-full relative">
                 <input type="text" placeholder='Search for a product' className='p-2 w-full rounded' />
-                <BsSearch className='absolute bottom-4 right-5'/>
+                <BsSearch className='absolute bottom-4 right-5 md:bottom-7 md:right-12'/>
             </div>
         </section>
         <div className="flex flex-wrap min-w-screen-xl border-t border-zinc-800 mx-auto">
@@ -44,7 +44,7 @@ export default function Shop( {cart}: {cart: {
                             </Link>
                             <div className="p-4 pb-10">
                                 <h2 className="text-purple-300 font-bold text-2xl tracking-tight mb-2">{item.name}</h2>
-                                <p className={`text-purple-300 text-base`}>{item.description}</p>
+                                <p className={`text-zinc-300 text-base`}>{item.description}</p>
                                 <div className="mt-2 flex flex-col absolute bottom-5 w-full">
                                     <div className=" pb-5">
                                         <span className="text-purple-300 font-bold text-xl">{item.price}</span>
