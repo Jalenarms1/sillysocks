@@ -23,21 +23,21 @@ export default function Shop( {cart}: {cart: {
     <div className='pt-2'>
         <Image width={250} height={250} src={'/images/sslogo.jpeg'} alt={"logo"} className="bg-blend-multiply w-96 max-sm:w-4/5 max-sm:mx-auto m-5 h-48 rounded-lg shadow-sm shadow-zinc-700" />
         <section className="bg-zinc-900  flex max-sm:flex-col justify-between items-center max-sm:p-4 max-sm:items-start">
-            <div className="max-sm:p-4 sm:px-8">
+            <div className="max-sm:p-1 sm:px-8">
                 <h2 className="text-purple-200 text-3xl ">Browse our Products</h2>
                 <p className="mt-2 text-gray-600 text-md">Find exactly what you are looking for with a quick search.</p>
             </div>
-            <div className="p-4 pr-10 w-[30%] max-lg:w-[40%] max-sm:w-full relative">
+            <div className="p-4 max-sm:p-1 pr-10 w-[30%] max-lg:w-[40%] max-sm:w-full relative">
                 <input type="text" placeholder='Search for a product' className='p-2 w-full rounded' />
-                <BsSearch className='absolute bottom-7 right-12'/>
+                <BsSearch className='absolute bottom-4 right-5'/>
             </div>
         </section>
         <div className="flex flex-wrap min-w-screen-xl border-t border-zinc-800 mx-auto">
             
             <div className="w-full py-4">
-                <div className="w-full flex flex-wrap max-sm:flex-col gap-4 max-sm:gap-6">
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-6 px-5">
                     {data?.map((item: any, index: number) => (
-                        <div key={index} className="bg-zinc-900 relative pb-20 md:w-[42%] lg:w-[23%] xl:w-[18%] shadow-md shadow-purple-300 rounded-lg overflow-hidden card  max-sm:w-3/4 max-sm:mx-auto">
+                        <div key={index} className="bg-zinc-900 relative pb-20 shadow-md shadow-purple-300 hover:shadow-purple-600 rounded-lg overflow-hidden card   w-full max-sm:mx-auto">
                             <Link href={`/product/${item.id}`} className="w-full h-64">
                                 <Image width={250} height={250} className="w-full h-64 object-cover object-center" src={item.image} alt="Product image" />
                             

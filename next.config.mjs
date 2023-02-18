@@ -14,7 +14,7 @@ const config = {
     defaultLocale: "en",
   },
   images: {
-    domains: ['cdn-dynmedia-1.microsoft.com', 'via.placeholder.com', 'shop-cdn.sockittome.com', 'cdn.shopify.com']
+    domains: ['cdn-dynmedia-1.microsoft.com', 'via.placeholder.com', 'shop-cdn.sockittome.com', 'cdn.shopify.com', 'res.cloudinary.com']
   }
 };
 export default config;

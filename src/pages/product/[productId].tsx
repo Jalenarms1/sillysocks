@@ -24,11 +24,11 @@ export default function Product({cart}: {cart: {
 
   return (
     <>
-        <div className="flex flex-col md:flex-row gap-5 border-t border-zinc-800">
-            <div className=" pl-8 py-8">
+        <div className="flex flex-col md:flex-row max-sm:items-center gap-5 border-t border-zinc-800 px-3">
+            <div className="sm:pl-8 pt-8 sm:pb-8">
                 <Image width={250} height={250} className="w-96 mx-auto object-cover object-center rounded-lg shadow-sm shadow-purple-900" src={data?.image as string} alt="Product image" />
             </div>
-            <div className="lg:w-2/5 md:w-1/2 py-8 pr-8">
+            <div className=" py-8 sm:w-3/4 sm:pr-2 md:w-2/4 lg:w-[40%]">
                 <h1 className="text-4xl font-bold text-purple-300 mb-2">{data?.name}</h1>
                 <p className="text-lg text-gray-500 mb-4">{data?.description}</p>
                 <div className="flex justify-between items-center mb-4">
@@ -36,7 +36,7 @@ export default function Product({cart}: {cart: {
                         <p className='text-purple-200'>In Stock</p>
                     </div>
                     <div>
-                        <span className="text-2xl font-bold text-purple-300">{data?.price}</span>
+                        <span className="text-2xl font-bold text-purple-300">${data?.price.toFixed(2)}</span>
                         <span className="text-base text-gray-600 ml-2 line-through">$69.99</span>
                     </div>
                 </div>
@@ -89,7 +89,7 @@ export default function Product({cart}: {cart: {
                     </div>
                 </a> */}
                     {products?.slice(0,4).map((item: any, index: number) => (
-                        <div  key={index} className="bg-zinc-900 relative pb-20 shadow-md shadow-purple-300 hover:shadow-purple-600 rounded-lg overflow-hidden card  max-sm:w-3/4 max-sm:mx-auto">
+                        <div  key={index} className="bg-zinc-900 relative pb-20 shadow-md shadow-purple-300 hover:shadow-purple-600 rounded-lg overflow-hidden card   w-full max-sm:mx-auto">
                             <Link href={`/product/${item.id}`}>
                                 <Image width={200} height={200} className="w-full h-64 object-cover object-center" src={item.image} alt="Product image" />
                             </Link>
