@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import React from 'react'
 
 export default function Footer() {
@@ -31,8 +32,10 @@ export default function Footer() {
               </div>
               <hr className="border-gray-500 my-8" />
               <div className="text-sm text-gray-500 text-center">
+                
               &copy; 2023 Silly Socks and More. All rights reserved.
-                </div>
+              </div>
+
         </div>
     </footer>
   )

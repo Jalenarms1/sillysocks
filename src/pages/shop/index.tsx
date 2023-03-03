@@ -21,9 +21,9 @@ export default function Shop( {cart}: {cart: {
 
   return (
     <div className='pt-2'>
-        <Image width={250} height={250} src={'/images/sslogo.jpeg'} alt={"logo"} className="bg-blend-multiply w-96 max-sm:w-4/5 max-sm:mx-auto m-5 h-48 rounded-lg shadow-sm shadow-zinc-700" />
+        {/* <Image width={250} height={250} src={'/images/sockslogo.png'} alt={"logo"} className="bg-blend-multiply  max-sm:w-4/5 max-sm:mx-auto m-5 h-48 rounded-lg " /> */}
         <section className="bg-zinc-900  flex max-sm:flex-col justify-between items-center max-sm:p-4 max-sm:items-start">
-            <div className="max-sm:p-1 sm:px-8">
+            <div className="max-sm:p-1 sm:px-6">
                 <h2 className="text-purple-200 text-3xl ">Browse our Products</h2>
                 <p className="mt-2 text-gray-600 text-md">Find exactly what you are looking for with a quick search.</p>
             </div>
@@ -47,7 +47,7 @@ export default function Shop( {cart}: {cart: {
                                 <p className={`text-zinc-300 text-base`}>{item.description}</p>
                                 <div className="mt-2 flex flex-col absolute bottom-5 w-full">
                                     <div className=" pb-5">
-                                        <span className="text-purple-300 font-bold text-xl">{item.price}</span>
+                                        <span className="text-purple-300 font-bold text-xl">${item.price.toFixed(2)}</span>
                                         <span className="text-gray-600 text-sm ml-2 line-through">$69.99</span>
                                     </div>
                                     <button onClick={() => cart.addToCart(item.id, item.name, item.image, item.description, item.price)} className="py-2 px-4 w-1/2 bg-purple-800 hover:bg-purple-700 text-white rounded-lg ">Add to Cart</button>

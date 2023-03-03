@@ -61,14 +61,14 @@ export const dbRouter = router({
 
       return product
   }),
-  send: publicProcedure
-  .input(z.object({id: z.string()}))
-  .mutation(async ({ctx: {prisma}, input: {id} }) => {
+  sendMail: publicProcedure
+  .input(z.object({subject: z.string(), message: z.string(), emailAddress: z.string()}))
+  .mutation(async ({ctx: {prisma}, input: {subject, message, emailAddress} }) => {
     const mailOptions = {
       from: 'dev.test.jalen@gmail.com',
-      to: 'jalenarms@outlook.com',
-      subject: 'Test',
-      text: `${id} This is a test message`
+      to: emailAddress,
+      subject,
+      text: message
     };
 
     await transporter.sendMail(mailOptions);
@@ -92,6 +92,8 @@ export const dbRouter = router({
         }
         
       });
+      console.log(products);
+      
       for (const product of products) {
         const createdOrderItem = await prisma.orderItem.create({
           data: {
@@ -100,7 +102,8 @@ export const dbRouter = router({
             },
             product: {
               connect: {id: product.id}
-            }
+            },
+            productQuantity: product.quantity
           },
         });
 

@@ -36,11 +36,12 @@ model Order {
 }
 
 model orderItem {
-  id        String  @id @default(cuid())
-  productId String
-  product   Product @relation(fields: [productId], references: [id])
-  orderId   String
-  order     Order   @relation(fields: [orderId], references: [id])
+  id              String  @id @default(cuid())
+  productId       String
+  productQuantity Int
+  product         Product @relation(fields: [productId], references: [id])
+  orderId         String
+  order           Order   @relation(fields: [orderId], references: [id])
 }
 
 // Necessary for Next auth

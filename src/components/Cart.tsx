@@ -23,7 +23,7 @@ export default function Cart({isOpen, setIsOpen, cart}: {isOpen: boolean, setIsO
     removeFromCart: (id: string) => void;
 }}) {
 
-    const sendMail = trpc.dbRouter.send.useMutation()
+    const sendMail = trpc.dbRouter.sendMail.useMutation()
     const onSubmit = trpc.dbRouter.submittedOrder.useMutation()
     
     // const {addOne, subtractOne} = useSetGetLocalStorage()
@@ -34,7 +34,7 @@ export default function Cart({isOpen, setIsOpen, cart}: {isOpen: boolean, setIsO
           purchase_units: [
             {
               amount: {
-                value: cart.getTotal().toFixed(2),
+                value: JSON.parse(localStorage.getItem("sillysocks-cart") as string).reduce((acc:any, obj:any) => acc + obj.total, 0),
                 currency_code: "USD",
               },
             },
@@ -53,11 +53,12 @@ export default function Cart({isOpen, setIsOpen, cart}: {isOpen: boolean, setIsO
             } ${details.purchase_units[0].shipping.address.country_code
             } ${details.purchase_units[0].shipping.address.postal_code
             } `);
-            onSubmit.mutate({id: details.id, total: parseFloat(details.purchase_units[0].amount.value), products: cart.cart, shippingAddress: `${details.purchase_units[0].shipping.address.address_line_1} ${details.purchase_units[0].shipping.address.admin_area_2
+            onSubmit.mutate({id: details.id, total: parseFloat(details.purchase_units[0].amount.value), products: JSON.parse(localStorage.getItem("sillysocks-cart") as string), shippingAddress: `${details.purchase_units[0].shipping.address.address_line_1} ${details.purchase_units[0].shipping.address.admin_area_2
             } ${details.purchase_units[0].shipping.address.admin_area_1
             } ${details.purchase_units[0].shipping.address.country_code
             } ${details.purchase_units[0].shipping.address.postal_code
             } `, emailAddress: details.payer.email_address, customerName: details.payer.name.given_name})
+            sendMail.mutate({emailAddress: `${details.payer.email_address}`, subject: `Payment confirmation`, message: `${details.payer.name.given_name}, Thank you for your payment of $${parseFloat(details.purchase_units[0].amount.value).toFixed(2)}. Order ${details.id} has been submitted and will get to you within 5-7 business days, excluding external factors that may cause a delay. If there any issues with your order please contact us at support@sillysocksandmore.com.`})
             console.log(details);
             cart.clearCart()
             

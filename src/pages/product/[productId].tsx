@@ -98,7 +98,7 @@ export default function Product({cart}: {cart: {
                                 <p className="text-purple-300 text-base">{item.description}</p>
                                 <div className="mt-2 flex flex-col absolute bottom-5 w-full">
                                     <div className=" pb-5">
-                                        <span className="text-purple-300 font-bold text-xl">{item.price}</span>
+                                        <span className="text-purple-300 font-bold text-xl">${item.price.toFixed(2)}</span>
                                         <span className="text-gray-600 text-sm ml-2 line-through">$69.99</span>
                                     </div>
                                     <button onClick={() => cart.addToCart(item.id, item.name, item.image, item.description, item.price)} className="py-2 px-4 w-1/2 bg-purple-800 hover:bg-purple-700 text-white rounded-lg ">Add to Cart</button>
