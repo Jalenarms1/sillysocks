@@ -35,7 +35,7 @@ export default function Shop( {cart}: {cart: {
         <div className="flex flex-wrap min-w-screen-xl border-t border-zinc-800 mx-auto">
             
             <div className="w-full py-4">
-                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-6 px-5">
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 mt-6 px-5">
                     {data?.map((item: any, index: number) => (
                         <div key={index} className="bg-zinc-900 relative pb-20 shadow-md shadow-purple-300 hover:shadow-purple-600 rounded-lg overflow-hidden card   w-full max-sm:mx-auto">
                             <Link href={`/product/${item.id}`} className="w-full h-64">
