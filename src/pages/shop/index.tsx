@@ -20,12 +20,12 @@ export default function Shop( {cart}: {cart: {
     }
 
   return (
-    <div className='pt-2'>
+    <div className=''>
         {/* <Image width={250} height={250} src={'/images/sockslogo.png'} alt={"logo"} className="bg-blend-multiply  max-sm:w-4/5 max-sm:mx-auto m-5 h-48 rounded-lg " /> */}
-        <section className="bg-zinc-900  flex max-sm:flex-col justify-between items-center max-sm:p-4 max-sm:items-start">
-            <div className="max-sm:p-1 sm:px-6">
+        <section className="bg-zinc-800  flex max-sm:flex-col justify-between items-center max-sm:p-4 max-sm:items-start pt-16 shadow-inner shadow-zinc-900">
+            <div className="max-sm:p-1 sm:px-6 ">
                 <h2 className="text-purple-200 text-3xl ">Browse our Products</h2>
-                <p className="mt-2 text-gray-600 text-md">Find exactly what you are looking for with a quick search.</p>
+                <p className="mt-2 text-gray-400 text-md">Find exactly what you are looking for with a quick search.</p>
             </div>
             <div className="p-4 max-sm:p-1 pr-10 w-[30%] max-lg:w-[40%] max-sm:w-full relative">
                 <input type="text" placeholder='Search for a product' className='p-2 w-full rounded' />
