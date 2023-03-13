@@ -6,6 +6,7 @@ const createProductInputSchema = z.object({
     name: z.string(),
     description: z.string(),
     quantity: z.number(),
+    category: z.string(),
     price: z.number(),
     image: z.string()
 });
