@@ -63,7 +63,7 @@ export const dbRouter = router({
   }),
   sendMail: publicProcedure
   .input(z.object({subject: z.string(), message: z.string(), emailAddress: z.string()}))
-  .mutation(async ({ctx: {prisma}, input: {subject, message, emailAddress} }) => {
+  .mutation(async ({input: {subject, message, emailAddress} }) => {
     const mailOptions = {
       from: 'dev.test.jalen@gmail.com',
       to: emailAddress,

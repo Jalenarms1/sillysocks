@@ -71,7 +71,7 @@ export default function Cart({isOpen, setIsOpen, cart}: {isOpen: boolean, setIsO
     <PayPalScriptProvider options={{ "client-id": "Aczc1MR7LF7SEwhA9s1hA1YPkWHaKexvxYWPsM7Q2vyIhCRkyTjvCbdATq2e7qETavmZ154pms3ySUug", currency: "USD" }}>
 
         <div
-            className={`fixed z-10 inset-y-0 right-0 max-w-xs w-full bg-zinc-600 shadow-lg overflow-hidden transform transition duration-300 ease-in-out ${
+            className={`fixed z-10 overflow-y-auto scrollbar-none inset-y-0 right-0 max-w-xs w-full bg-zinc-600 shadow-lg transform transition duration-300 ease-in-out ${
             isOpen ? "translate-x-0" : "translate-x-full"
             }`}>
             <div className="p-4">

@@ -102,7 +102,7 @@ export default function Navbar({cart}: {cart: {
 
                 </div>}
                 <div className="w-full">
-                  <button onClick={() => setIsOpen(!isOpen)} className="text-yellow-400 flex items-center gap-1 max-sm:pt-10 hover:text-yellow-600 nav-options w-fit" >
+                  <button onClick={() => setIsOpen(!isOpen)} className="text-yellow-400 flex items-center gap-1 max-sm:pt-10 hover:text-yellow-600 nav-options w-fit max-sm:pb-3" >
                       <p>Cart</p>
                       <BsCart4  />
 
