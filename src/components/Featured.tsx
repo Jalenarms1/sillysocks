@@ -19,7 +19,7 @@ export default function Featured( {cart}: {cart: {
         {data?.slice(0,4).map((item: any, index: number) => (
             <div  key={index} className="bg-zinc-900 relative pb-20 shadow-md shadow-purple-300 hover:shadow-purple-600 rounded-lg overflow-hidden card   w-[90%] mx-auto">
                 <Link href={`/product/${item.id}`}>
-                    <Image width={500} height={500} className=" h-64 " src={item.image} alt="Product image" />
+                    <Image width={250} height={500} className=" h-64 object-cover " src={item.image} alt="Product image" />
                 </Link>
                 <div className="p-4 pb-10">
                     <h2 className="text-purple-300 font-bold text-2xl tracking-tight mb-2">{item.name}</h2>
@@ -29,7 +29,7 @@ export default function Featured( {cart}: {cart: {
                             <span className="text-purple-300 font-bold text-xl">${item.price.toFixed(2)}</span>
                             <span className="text-gray-600 text-sm ml-2 line-through">$69.99</span>
                         </div>
-                        <button onClick={() => cart.addToCart(item.id, item.name, item.image, item.description, item.price)} className="py-2 px-4 w-1/2 bg-purple-800 hover:bg-purple-700 text-white rounded-lg ">Add to Cart</button>
+                        <button onClick={() => cart.addToCart(item.id, item.name, item.image, item.description, item.price)} className="py-2 px-4 w-[90%] bg-purple-800 hover:bg-purple-700 text-white rounded-lg ">Add to Cart</button>
                     </div>
                 </div>
             </div>
