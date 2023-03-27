@@ -9,6 +9,7 @@ import Cart from './Cart'
 
 
 
+
 export default function Navbar({cart}: {cart: {
   cart: any[];
   clearCart: () => void;

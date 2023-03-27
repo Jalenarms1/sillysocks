@@ -68,7 +68,7 @@ export default function Cart({isOpen, setIsOpen, cart}: {isOpen: boolean, setIsO
     
     
   return (
-    <PayPalScriptProvider options={{ "client-id": "Aczc1MR7LF7SEwhA9s1hA1YPkWHaKexvxYWPsM7Q2vyIhCRkyTjvCbdATq2e7qETavmZ154pms3ySUug", currency: "USD" }}>
+    <PayPalScriptProvider options={{ "client-id": "ARctucR5YVLCKYMlCQCSrSVixD6HdOfVAbK9SpKi0f4lPoxvdIBYyNgmFSs3ptIKB_vCgf0pVw-xg83f", currency: "USD" }}>
 
         <div
             className={`fixed z-10 overflow-y-auto scrollbar-none inset-y-0 right-0 max-w-xs w-full bg-zinc-600 shadow-lg transform transition duration-300 ease-in-out ${
