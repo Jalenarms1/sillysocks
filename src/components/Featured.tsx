@@ -19,7 +19,7 @@ export default function Featured( {cart}: {cart: {
         {data?.slice(0,4).map((item: any, index: number) => (
             <div  key={index} className="bg-zinc-900 relative pb-20 shadow-md shadow-purple-300 hover:shadow-purple-600 rounded-lg overflow-hidden card   w-[90%] mx-auto">
                 <Link href={`/product/${item.id}`}>
-                    <Image width={500} height={500} className=" h-64 object-cover object-center" src={item.image} alt="Product image" />
+                    <Image width={500} height={500} className=" h-64 " src={item.image} alt="Product image" />
                 </Link>
                 <div className="p-4 pb-10">
                     <h2 className="text-purple-300 font-bold text-2xl tracking-tight mb-2">{item.name}</h2>
