@@ -24,7 +24,7 @@ export default function Shop( {cart}: {cart: {
     }
 
     const filterBySearch = (arr: Product[]) => {
-        const newArr = arr.filter(item => item.name.toLowerCase().startsWith(searchInput.toLowerCase()))
+        const newArr = arr?.filter(item => item.name.toLowerCase().startsWith(searchInput.toLowerCase()))
 
         return newArr
     }
