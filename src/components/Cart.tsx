@@ -59,16 +59,18 @@ export default function Cart({isOpen, setIsOpen, cart}: {isOpen: boolean, setIsO
             } ${details.purchase_units[0].shipping.address.postal_code
             } `, emailAddress: details.payer.email_address, customerName: details.payer.name.given_name})
             sendMail.mutate({emailAddress: `${details.payer.email_address}`, subject: `Payment confirmation`, message: `${details.payer.name.given_name}, Thank you for your payment of $${parseFloat(details.purchase_units[0].amount.value).toFixed(2)}. Order ${details.id} has been submitted and will get to you within 5-7 business days, excluding external factors that may cause a delay. If there any issues with your order please contact us at support@sillysocksandmore.com.`})
+            
             console.log(details);
             cart.clearCart()
             
         });
     };
 
-    
+    // Aczc1MR7LF7SEwhA9s1hA1YPkWHaKexvxYWPsM7Q2vyIhCRkyTjvCbdATq2e7qETavmZ154pms3ySUug
+    // live - ARctucR5YVLCKYMlCQCSrSVixD6HdOfVAbK9SpKi0f4lPoxvdIBYyNgmFSs3ptIKB_vCgf0pVw-xg83f
     
   return (
-    <PayPalScriptProvider options={{ "client-id": "ARctucR5YVLCKYMlCQCSrSVixD6HdOfVAbK9SpKi0f4lPoxvdIBYyNgmFSs3ptIKB_vCgf0pVw-xg83f", currency: "USD" }}>
+    <PayPalScriptProvider options={{ "client-id": "Aczc1MR7LF7SEwhA9s1hA1YPkWHaKexvxYWPsM7Q2vyIhCRkyTjvCbdATq2e7qETavmZ154pms3ySUug", currency: "USD" }}>
 
         <div
             className={`fixed z-10 overflow-y-auto scrollbar-none inset-y-0 right-0 max-w-xs w-full bg-zinc-600 shadow-lg transform transition duration-300 ease-in-out ${

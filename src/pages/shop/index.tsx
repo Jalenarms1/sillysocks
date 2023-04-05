@@ -1,6 +1,7 @@
+import { Product } from '@prisma/client'
 import Image from 'next/image'
 import Link from 'next/link'
-import React, { useState } from 'react'
+import React, { ChangeEvent, useState } from 'react'
 import {BsCart4} from 'react-icons/bs/index'
 import {BsSearch} from 'react-icons/bs/index'
 import { useSetGetLocalStorage } from '../../hooks/useLocalStorage'
@@ -11,12 +12,21 @@ export default function Shop( {cart}: {cart: {
     addToCart: (id: string, name: string, image: string, description: string, price: number) => void;
     removeFromCart: (id: string) => void;
 }}) {
-
+    const [searchInput, setSearchInput] = useState<string>("")
     const {inCart} = useSetGetLocalStorage()
     const {data, isLoading} = trpc.dbRouter.getProducts.useQuery()
 
     if(isLoading) {
         return null
+    }
+    function onInputUpdate(e: ChangeEvent<HTMLInputElement>){
+        setSearchInput(e.target?.value)
+    }
+
+    const filterBySearch = (arr: Product[]) => {
+        const newArr = arr.filter(item => item.name.toLowerCase().startsWith(searchInput.toLowerCase()))
+
+        return newArr
     }
 
   return (
@@ -28,7 +38,7 @@ export default function Shop( {cart}: {cart: {
                 <p className="mt-2 text-gray-400 text-md">Find exactly what you are looking for with a quick search.</p>
             </div>
             <div className="p-4 max-sm:p-1 pr-10 w-[30%] max-lg:w-[40%] max-sm:w-full relative">
-                <input type="text" placeholder='Search for a product' className='p-2 w-full rounded' />
+                <input onChange={onInputUpdate} type="text" placeholder='Search for a product' className='p-2 w-full rounded' />
                 <BsSearch className='absolute bottom-4 right-5 md:bottom-7 md:right-12'/>
             </div>
         </section>
@@ -36,7 +46,7 @@ export default function Shop( {cart}: {cart: {
             
             <div className="w-full py-4">
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 mt-6 px-5">
-                    {data?.map((item: any, index: number) => (
+                    {filterBySearch(data as Product[]).map((item: any, index: number) => (
                         <div key={index} className="bg-zinc-900 relative pb-20 shadow-md shadow-purple-300 hover:shadow-purple-600 rounded-lg overflow-hidden card   w-full max-sm:mx-auto">
                             <Link href={`/product/${item.id}`} className="w-full h-64">
                                 <Image width={250} height={250} className="w-full h-64 object-cover object-center" src={item.image} alt="Product image" />
