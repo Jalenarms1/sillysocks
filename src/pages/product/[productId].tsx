@@ -88,25 +88,28 @@ export default function Product({cart}: {cart: {
                     </div>
                     </div>
                 </a> */}
-                    {products?.slice(0,4).map((item: any, index: number) => (
-                        <div  key={index} className="bg-zinc-900 relative pb-20 shadow-md shadow-purple-300 hover:shadow-purple-600 rounded-lg overflow-hidden card   w-full max-sm:mx-auto">
-                            <Link href={`/product/${item.id}`}>
-                                <Image width={200} height={200} className="w-full h-64 object-cover object-center" src={item.image} alt="Product image" />
-                            </Link>
-                            <div className="p-4 pb-10">
-                                <h2 className="text-purple-300 font-bold text-2xl tracking-tight mb-2">{item.name}</h2>
-                                <p className="text-purple-300 text-base">{item.description}</p>
-                                <div className="mt-2 flex flex-col absolute bottom-5 w-full">
-                                    <div className=" pb-5">
-                                        <span className="text-purple-300 font-bold text-xl">${item.price.toFixed(2)}</span>
-                                        <span className="text-gray-600 text-sm ml-2 line-through">$69.99</span>
-                                    </div>
-                                    <button onClick={() => cart.addToCart(item.id, item.name, item.image, item.description, item.price)} className="py-2 px-4 w-1/2 bg-purple-800 hover:bg-purple-700 text-white rounded-lg ">Add to Cart</button>
+                <div className="w-[500px] flex gap-4">
+                
+                {products?.slice(0,4).map((item: any, index: number) => (
+                    <div  key={index} className="bg-zinc-900 relative pb-20 shadow-md shadow-purple-300 hover:shadow-purple-600 rounded-lg overflow-hidden card   w-[90%] mx-auto">
+                        <Link href={`/product/${item.id}`}>
+                            <Image width={250} height={500} className=" h-64 object-cover" src={item.image} alt="Product image" />
+                        </Link>
+                        <div className="p-4 pb-10">
+                            <h2 className="text-purple-300 font-bold text-2xl tracking-tight mb-2">{item.name}</h2>
+                            <p className="text-purple-300 text-base">{item.description}</p>
+                            <div className="mt-2 flex flex-col absolute bottom-5 w-full">
+                                <div className=" pb-5">
+                                    <span className="text-purple-300 font-bold text-xl">${item.price.toFixed(2)}</span>
+                                    <span className="text-gray-600 text-sm ml-2 line-through">$69.99</span>
                                 </div>
+                                <button onClick={() => cart.addToCart(item.id, item.name, item.image, item.description, item.price)} className="py-2 px-4 w-[90%] bg-purple-800 hover:bg-purple-700 text-white rounded-lg ">Add to Cart</button>
                             </div>
                         </div>
-                    )
-                    )}
+                    </div>
+                )
+                )}
+            </div>
                 </div>
             </div>
         </div>
