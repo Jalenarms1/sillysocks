@@ -46,56 +46,18 @@ export default function Product({cart}: {cart: {
         </div>
         <div className="py-12 bg-zinc-800">
             <div className="px-4">
-                <h2 className="text-3xl font-extrabold tracking-tight text-purple-100">Related Items</h2>
-                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-6">
-                {/* <a href="#" className="group">
-                    <div className="bg-zinc-900 shadow-md shadow-purple-300 rounded-lg overflow-hidden card">
-                    <Image width={250} height={250} className="w-full h-64 object-cover object-center" src="/images/model-sock.png" alt="Product image" />
-                    <div className="p-4">
-                        <h3 className="text-lg font-bold text-purple-300 group-hover:text-purple-400 mb-2">Product Title</h3>
-                        <p className="text-gray-600 text-base">Product description goes here.</p>
-                        <span className="text-purple-300 font-bold text-xl">$49.99</span>
-                    </div>
-                    </div>
-                </a>
-                <a href="#" className="group">
-                    <div className="bg-zinc-900 shadow-md shadow-purple-300 rounded-lg overflow-hidden card">
-                    <Image width={250} height={250} className="w-full h-64 object-cover object-center" src="/images/model-sock.png" alt="Product image" />
-                    <div className="p-4">
-                        <h3 className="text-lg font-bold text-purple-300 group-hover:text-purple-400 mb-2">Product Title</h3>
-                        <p className="text-gray-600 text-base">Product description goes here.</p>
-                        <span className="text-purple-300 font-bold text-xl">$49.99</span>
-                    </div>
-                    </div>
-                </a>
-                <a href="#" className="group">
-                    <div className="bg-zinc-900 shadow-md shadow-purple-300 rounded-lg overflow-hidden card">
-                    <Image width={250} height={250} className="w-full h-64 object-cover object-center" src="/images/model-sock.png" alt="Product image" />
-                    <div className="p-4">
-                        <h3 className="text-lg font-bold text-purple-300 group-hover:text-purple-400 mb-2">Product Title</h3>
-                        <p className="text-gray-600 text-base">Product description goes here.</p>
-                        <span className="text-purple-300 font-bold text-xl">$49.99</span>
-                    </div>
-                    </div>
-                </a>
-                <a href="#" className="group">
-                    <div className="bg-zinc-900 shadow-md shadow-purple-300 rounded-lg overflow-hidden card">
-                    <Image width={250} height={250} className="w-full h-64 object-cover object-center" src="/images/model-sock.png" alt="Product image" />
-                    <div className="p-4">
-                        <h3 className="text-lg font-bold text-purple-300 group-hover:text-purple-400 mb-2">Product Title</h3>
-                        <p className="text-gray-600 text-base">Product description goes here.</p>
-                        <span className="text-purple-300 font-bold text-xl">$49.99</span>
-                    </div>
-                    </div>
-                </a> */}
-                    {products?.slice(0,4).map((item: any, index: number) => (
-                        <div  key={index} className="bg-zinc-900 relative pb-20 shadow-md shadow-purple-300 hover:shadow-purple-600 rounded-lg overflow-hidden card   w-full max-sm:mx-auto">
-                            <Link href={`/product/${item.id}`}>
-                                <Image width={250} height={500} className=" h-64 object-cover " src={item.image} alt="Product image" />
+                <h2 className="text-3xl font-extrabold tracking-tight text-purple-100">Popular</h2>
+                <div className="w-full py-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 xl:grid-cols-6  mt-6 px-5 max-sm:gap-5">
+                    {products?.map((item: any, index: number) => (
+                        <div key={index} className="bg-zinc-900 relative pb-20 shadow-md shadow-purple-300 hover:shadow-purple-600 rounded-lg overflow-hidden card   w-60 max-sm:mx-auto ">
+                            <Link href={`/product/${item.id}`} className="w-full h-64">
+                                <Image width={250} height={250} className="w-full h-64 object-cover object-center" src={item.image} alt="Product image" />
+                            
                             </Link>
                             <div className="p-4 pb-10">
                                 <h2 className="text-purple-300 font-bold text-2xl tracking-tight mb-2">{item.name}</h2>
-                                <p className="text-purple-300 text-base">{item.description}</p>
+                                <p className={`text-zinc-300 text-base`}>{item.description}</p>
                                 <div className="mt-2 flex flex-col absolute bottom-5 w-full">
                                     <div className=" pb-5">
                                         <span className="text-purple-300 font-bold text-xl">${item.price.toFixed(2)}</span>
@@ -105,9 +67,9 @@ export default function Product({cart}: {cart: {
                                 </div>
                             </div>
                         </div>
-                    )
-                    )}
+                    ))}
                 </div>
+            </div>
             </div>
         </div>
     </>
