@@ -26,9 +26,9 @@ export default function Product({cart}: {cart: {
     <>
         <div className="flex flex-col md:flex-row max-sm:items-center gap-5 border-t border-zinc-800 px-3">
             <div className="sm:pl-8 pt-8 sm:pb-8">
-                <Image width={250} height={250} className="w-96 mx-auto object-cover object-center rounded-lg shadow-sm shadow-purple-900" src={data?.image as string} alt="Product image" />
+                <Image width={250} height={250} className="w-96 max-sm:h-96 mx-auto object-cover object-center rounded-lg shadow-sm shadow-purple-900" src={data?.image as string} alt="Product image" />
             </div>
-            <div className=" py-8 sm:w-3/4 sm:pr-2 md:w-2/4 lg:w-[40%]">
+            <div className=" py-8 sm:w-3/4 sm:pr-2 md:w-2/4 lg:w-[40%] w-full">
                 <h1 className="text-4xl font-bold text-purple-300 mb-2">{data?.name}</h1>
                 <p className="text-lg text-gray-500 mb-4">{data?.description}</p>
                 <div className="flex justify-between items-center mb-4">
@@ -48,11 +48,11 @@ export default function Product({cart}: {cart: {
             <div className="px-4">
                 <h2 className="text-3xl font-extrabold tracking-tight text-purple-100">Popular</h2>
                 <div className="w-full py-4">
-                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 xl:grid-cols-6  mt-6 px-5 max-sm:gap-5">
-                        {products?.map((item: any, index: number) => (
-                            <div key={index} className="bg-zinc-900 relative pb-20 shadow-md shadow-purple-300 hover:shadow-purple-600 rounded-lg overflow-hidden card   w-60 max-sm:mx-auto ">
+                    <div className="sm:grid max-sm:flex max-sm:flex-col sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 xl:grid-cols-6  mt-6 sm:px-5 max-sm:gap-5">
+                        {products?.slice(0,4).map((item: any, index: number) => (
+                            <div key={index} className="bg-zinc-900 relative pb-20 shadow-md shadow-purple-300 hover:shadow-purple-600 rounded-lg overflow-hidden card max-sm:w-72  w-60 max-sm:mx-auto ">
                                 <Link href={`/product/${item.id}`} className="w-full h-64">
-                                    <Image width={250} height={250} className="w-full h-64 object-cover object-center" src={item.image} alt="Product image" />
+                                    <Image width={250} height={250} className="w-full h-72 object-cover object-center" src={item.image} alt="Product image" />
                                 
                                 </Link>
                                 <div className="p-4 pb-10">
