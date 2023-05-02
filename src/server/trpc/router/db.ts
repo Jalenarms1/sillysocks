@@ -1,6 +1,10 @@
 import { z } from "zod";
 import {transporter} from '../../mailer';
+import Taxjar from 'taxjar';
 
+const taxjar = new Taxjar({
+  apiKey: process.env.TAXJAR_AP_TKN as string
+});
 
 import { router, publicProcedure } from "../trpc";
 
@@ -127,4 +131,10 @@ export const dbRouter = router({
       
     }
   }),
+  getSalesTax: publicProcedure
+    .input(z.object({zipCode: z.string()}))
+    .query(async ({input: {zipCode}}) => {
+      const salesTaxRate = await taxjar.ratesForLocation(zipCode);
+      return salesTaxRate;
+    })
 });

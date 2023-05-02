@@ -7,9 +7,7 @@ import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
 
 import {GrFormAdd} from 'react-icons/gr/index'
 import {GrFormSubtract} from 'react-icons/gr/index'
-import { useSetGetLocalStorage } from '../hooks/useLocalStorage'
 import { trpc } from '../utils/trpc'
-import dynamic from 'next/dynamic'
 
 
 
@@ -22,9 +20,14 @@ export default function Cart({isOpen, setIsOpen, cart}: {isOpen: boolean, setIsO
     addToCart: (id: string, name: string, image: string, description: string, price: number) => void;
     removeFromCart: (id: string) => void;
 }}) {
-
+    const [taxRate, setTaxRate] = useState(0);
+    const [zipCode, setZipCode] = useState('85043');
+    console.log(zipCode);
+    console.log(taxRate);
+    
     const sendMail = trpc.dbRouter.sendMail.useMutation()
     const onSubmit = trpc.dbRouter.submittedOrder.useMutation()
+    const {data, isLoading} = trpc.dbRouter.getSalesTax.useQuery({zipCode})
     
     // const {addOne, subtractOne} = useSetGetLocalStorage()
     const createOrder = (data:any, actions:any,) => {
@@ -65,6 +68,42 @@ export default function Cart({isOpen, setIsOpen, cart}: {isOpen: boolean, setIsO
             
         });
     };
+
+    useEffect(() => {
+        console.log("fdsfs");
+        
+        if (zipCode != '') {
+            console.log(data);
+            setTaxRate(data?.rate.combined_rate as number)
+            
+            
+            
+            
+              
+        }
+    }, [zipCode]);
+
+    useEffect(() => {
+        console.log("Hello")
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(
+              (position) => {
+                const { latitude, longitude } = position.coords;
+                fetch(`https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${latitude}&longitude=${longitude}&localityLanguage=en`)
+                  .then(response => response.json())
+                  .then(data => {
+                    setZipCode(data.postcode);
+                  })
+                  .catch(error => console.error(error));
+              },
+              (error) => console.error(error)
+            );
+        } 
+    }, [])
+
+    if(isLoading){
+        return null
+    }
 
     // Aczc1MR7LF7SEwhA9s1hA1YPkWHaKexvxYWPsM7Q2vyIhCRkyTjvCbdATq2e7qETavmZ154pms3ySUug
     // live - ARctucR5YVLCKYMlCQCSrSVixD6HdOfVAbK9SpKi0f4lPoxvdIBYyNgmFSs3ptIKB_vCgf0pVw-xg83f
@@ -109,8 +148,10 @@ export default function Cart({isOpen, setIsOpen, cart}: {isOpen: boolean, setIsO
                         
                         
                     ))}
-                    {cart.cart.length > 0 && <div className='w-full flex justify-end pt-5'>
-                        <p className="text-md text-white">Total: ${cart.getTotal().toFixed(2)}</p>
+                    {cart.cart.length > 0 && <div className='w-full flex flex-col items-end pt-5'>
+                        <p className="text-md text-white">Tax: ${(cart.getTotal() * taxRate).toFixed(2)}</p>
+                        
+                        <p className="text-md text-white">Total: ${(cart.getTotal() + taxRate).toFixed(2)}</p>
                     </div>}
                     
                 </div>

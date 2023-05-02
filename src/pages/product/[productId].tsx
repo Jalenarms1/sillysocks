@@ -48,7 +48,7 @@ export default function Product({cart}: {cart: {
             <div className="px-4">
                 <h2 className="text-3xl font-extrabold tracking-tight text-purple-100">Popular</h2>
                 <div className="w-full py-4">
-                    <div className="sm:grid max-sm:flex max-sm:flex-col sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 xl:grid-cols-6  mt-6 sm:px-5 max-sm:gap-5 sm:gap-2">
+                    <div className="sm:grid max-sm:flex max-sm:flex-col sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5  mt-6 sm:px-5 max-sm:gap-5 ">
                         {products?.slice(0,4).map((item: any, index: number) => (
                             <div key={index} className="bg-zinc-900 relative pb-20 shadow-md shadow-purple-300 hover:shadow-purple-600 rounded-lg overflow-hidden card max-sm:w-72  w-60 max-sm:mx-auto ">
                                 <Link href={`/product/${item.id}`} className="w-full h-64">
