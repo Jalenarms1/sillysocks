@@ -3,7 +3,7 @@ import {transporter} from '../../mailer';
 import Taxjar from 'taxjar';
 
 const taxjar = new Taxjar({
-  apiKey: process.env.TAXJAR_AP_TKN as string
+  apiKey: process.env.TAXJAR_API_TKN as string
 });
 
 import { router, publicProcedure } from "../trpc";
