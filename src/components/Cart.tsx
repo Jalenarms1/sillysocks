@@ -27,7 +27,7 @@ export default function Cart({isOpen, setIsOpen, cart}: {isOpen: boolean, setIsO
     
     const sendMail = trpc.dbRouter.sendMail.useMutation()
     const onSubmit = trpc.dbRouter.submittedOrder.useMutation()
-    const {data, isLoading} = trpc.dbRouter.getSalesTax.useQuery({zipCode})
+    const {data} = trpc.dbRouter.getSalesTax.useQuery({zipCode})
     
     // const {addOne, subtractOne} = useSetGetLocalStorage()
     const createOrder = (data:any, actions:any,) => {
@@ -72,16 +72,13 @@ export default function Cart({isOpen, setIsOpen, cart}: {isOpen: boolean, setIsO
     useEffect(() => {
         console.log("fdsfs");
         
-        if (zipCode != '') {
+        if (zipCode) {
             console.log(data);
-            setTaxRate(data?.rate.combined_rate as number)
-            
-            
             
             
               
         }
-    }, [zipCode]);
+    }, [zipCode, data]);
 
     useEffect(() => {
         console.log("Hello")
@@ -100,10 +97,6 @@ export default function Cart({isOpen, setIsOpen, cart}: {isOpen: boolean, setIsO
             );
         } 
     }, [])
-
-    if(isLoading){
-        return null
-    }
 
     // Aczc1MR7LF7SEwhA9s1hA1YPkWHaKexvxYWPsM7Q2vyIhCRkyTjvCbdATq2e7qETavmZ154pms3ySUug
     // live - ARctucR5YVLCKYMlCQCSrSVixD6HdOfVAbK9SpKi0f4lPoxvdIBYyNgmFSs3ptIKB_vCgf0pVw-xg83f
@@ -148,10 +141,8 @@ export default function Cart({isOpen, setIsOpen, cart}: {isOpen: boolean, setIsO
                         
                         
                     ))}
-                    {cart.cart.length > 0 && <div className='w-full flex flex-col items-end pt-5'>
-                        <p className="text-md text-white">Tax: ${(cart.getTotal() * taxRate).toFixed(2)}</p>
-                        
-                        <p className="text-md text-white">Total: ${(cart.getTotal() + taxRate).toFixed(2)}</p>
+                    {cart.cart.length > 0 && <div className='w-full flex justify-end pt-5'>
+                        <p className="text-md text-white">Total: ${cart.getTotal().toFixed(2)}</p>
                     </div>}
                     
                 </div>
