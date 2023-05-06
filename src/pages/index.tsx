@@ -71,7 +71,7 @@ const Home = ({cart}: {cart: {
         </div>
 
         <section className="pt-8">
-        <div className=" mx-auto flex items-center flex-wrap pt-4 pb-12 max-sm:pb-3">
+          <div className=" mx-auto flex items-center flex-wrap pt-4 pb-12 max-sm:pb-3">
             <h1 className="w-full my-2 text-4xl max-sm:text-3xl font-bold leading-tight text-center text-purple-200 mb-10">Featured Products</h1>
             <div className="w-full mb-4">
             <div className="h-1 mx-auto gradient w-64 opacity-25 my-0 py-0 rounded-t"></div>
