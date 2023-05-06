@@ -20,24 +20,29 @@ export default function Cart({isOpen, setIsOpen, cart}: {isOpen: boolean, setIsO
     addToCart: (id: string, name: string, image: string, description: string, price: number) => void;
     removeFromCart: (id: string) => void;
 }}) {
-    const [taxRate, setTaxRate] = useState(0);
     const [zipCode, setZipCode] = useState('85043');
     console.log(zipCode);
-    console.log(taxRate);
     
     const sendMail = trpc.dbRouter.sendMail.useMutation()
     const onSubmit = trpc.dbRouter.submittedOrder.useMutation()
     const {data} = trpc.dbRouter.getSalesTax.useQuery({zipCode})
+    const [taxRate, setTaxRate] = useState(data?.rate?.combined_rate);
+    console.log(taxRate);
+    console.log(data);
+    
     
     // const {addOne, subtractOne} = useSetGetLocalStorage()
     const createOrder = (data:any, actions:any,) => {
         console.log(cart.getTotal());
+        const cartTotal = JSON.parse(localStorage.getItem("sillysocks-cart") as string).reduce((acc:any, obj:any) => acc + obj.total, 0);
+        const totalWithTax = cartTotal + (cartTotal * (taxRate ?? 0.088));
+        console.log("incl", totalWithTax);
         
         return actions.order.create({
           purchase_units: [
             {
               amount: {
-                value: JSON.parse(localStorage.getItem("sillysocks-cart") as string).reduce((acc:any, obj:any) => acc + obj.total, 0),
+                value: totalWithTax.toFixed(2),
                 currency_code: "USD",
               },
             },
@@ -70,18 +75,12 @@ export default function Cart({isOpen, setIsOpen, cart}: {isOpen: boolean, setIsO
     };
 
     useEffect(() => {
-        console.log("fdsfs");
-        
-        if (zipCode) {
-            console.log(data);
-            
-            
-              
+        if (data && data.rate && data.rate.combined_rate) {
+          setTaxRate(data.rate.combined_rate);
         }
-    }, [zipCode, data]);
+    }, [data]);
 
     useEffect(() => {
-        console.log("Hello")
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(
               (position) => {
@@ -100,9 +99,9 @@ export default function Cart({isOpen, setIsOpen, cart}: {isOpen: boolean, setIsO
 
     // Aczc1MR7LF7SEwhA9s1hA1YPkWHaKexvxYWPsM7Q2vyIhCRkyTjvCbdATq2e7qETavmZ154pms3ySUug
     // live - ARctucR5YVLCKYMlCQCSrSVixD6HdOfVAbK9SpKi0f4lPoxvdIBYyNgmFSs3ptIKB_vCgf0pVw-xg83f
-    
+    console.log("key", process.env.PAYPAL_KEY)
   return (
-    <PayPalScriptProvider options={{ "client-id": "ARctucR5YVLCKYMlCQCSrSVixD6HdOfVAbK9SpKi0f4lPoxvdIBYyNgmFSs3ptIKB_vCgf0pVw-xg83f", currency: "USD" }}>
+    <PayPalScriptProvider options={{ "client-id": 'ARctucR5YVLCKYMlCQCSrSVixD6HdOfVAbK9SpKi0f4lPoxvdIBYyNgmFSs3ptIKB_vCgf0pVw-xg83f', currency: "USD" }}>
 
         <div
             className={`fixed z-10 overflow-y-auto scrollbar-none inset-y-0 right-0 max-w-xs w-full bg-zinc-600 shadow-lg transform transition duration-300 ease-in-out ${
@@ -141,8 +140,9 @@ export default function Cart({isOpen, setIsOpen, cart}: {isOpen: boolean, setIsO
                         
                         
                     ))}
-                    {cart.cart.length > 0 && <div className='w-full flex justify-end pt-5'>
-                        <p className="text-md text-white">Total: ${cart.getTotal().toFixed(2)}</p>
+                    {cart.cart.length > 0 && <div className='w-full flex flex-col items-end pt-5 gap-3'>
+                        {taxRate && <p className="text-md text-white">Tax: ${(cart.getTotal() * taxRate).toFixed(2)}</p>}
+                        {taxRate && <p className="text-lg text-white">Total: ${(cart.getTotal() + (cart.getTotal() * taxRate)).toFixed(2)}</p>}
                     </div>}
                     
                 </div>
