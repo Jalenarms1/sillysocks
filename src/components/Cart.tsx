@@ -99,7 +99,6 @@ export default function Cart({isOpen, setIsOpen, cart}: {isOpen: boolean, setIsO
 
     // Aczc1MR7LF7SEwhA9s1hA1YPkWHaKexvxYWPsM7Q2vyIhCRkyTjvCbdATq2e7qETavmZ154pms3ySUug
     // live - ARctucR5YVLCKYMlCQCSrSVixD6HdOfVAbK9SpKi0f4lPoxvdIBYyNgmFSs3ptIKB_vCgf0pVw-xg83f
-    console.log("key", process.env.PAYPAL_KEY)
   return (
     <PayPalScriptProvider options={{ "client-id": 'ARctucR5YVLCKYMlCQCSrSVixD6HdOfVAbK9SpKi0f4lPoxvdIBYyNgmFSs3ptIKB_vCgf0pVw-xg83f', currency: "USD" }}>
 
