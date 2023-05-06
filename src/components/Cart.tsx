@@ -34,12 +34,15 @@ export default function Cart({isOpen, setIsOpen, cart}: {isOpen: boolean, setIsO
     // const {addOne, subtractOne} = useSetGetLocalStorage()
     const createOrder = (data:any, actions:any,) => {
         console.log(cart.getTotal());
+        const cartTotal = JSON.parse(localStorage.getItem("sillysocks-cart") as string).reduce((acc:any, obj:any) => acc + obj.total, 0);
+        const totalWithTax = cartTotal + (cartTotal * (taxRate ?? 0.088));
+        console.log("incl", totalWithTax);
         
         return actions.order.create({
           purchase_units: [
             {
               amount: {
-                value: JSON.parse(localStorage.getItem("sillysocks-cart") as string).reduce((acc:any, obj:any) => acc + obj.total, 0),
+                value: totalWithTax.toFixed(2),
                 currency_code: "USD",
               },
             },
@@ -96,9 +99,9 @@ export default function Cart({isOpen, setIsOpen, cart}: {isOpen: boolean, setIsO
 
     // Aczc1MR7LF7SEwhA9s1hA1YPkWHaKexvxYWPsM7Q2vyIhCRkyTjvCbdATq2e7qETavmZ154pms3ySUug
     // live - ARctucR5YVLCKYMlCQCSrSVixD6HdOfVAbK9SpKi0f4lPoxvdIBYyNgmFSs3ptIKB_vCgf0pVw-xg83f
-    
+    console.log("key", process.env.PAYPAL_KEY)
   return (
-    <PayPalScriptProvider options={{ "client-id": "ARctucR5YVLCKYMlCQCSrSVixD6HdOfVAbK9SpKi0f4lPoxvdIBYyNgmFSs3ptIKB_vCgf0pVw-xg83f", currency: "USD" }}>
+    <PayPalScriptProvider options={{ "client-id": 'ARctucR5YVLCKYMlCQCSrSVixD6HdOfVAbK9SpKi0f4lPoxvdIBYyNgmFSs3ptIKB_vCgf0pVw-xg83f', currency: "USD" }}>
 
         <div
             className={`fixed z-10 overflow-y-auto scrollbar-none inset-y-0 right-0 max-w-xs w-full bg-zinc-600 shadow-lg transform transition duration-300 ease-in-out ${
