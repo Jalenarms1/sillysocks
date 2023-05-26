@@ -46,7 +46,7 @@ export default function Shop( {cart}: {cart: {
         <div className="flex flex-wrap min-w-screen-xl border-t border-zinc-800 mx-auto">
             
             
-            <div className="w-full max-sm:w-[65%] px-4 pb-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 mt-6 gap-4 mx-auto" style={{ gap: "1rem", justifyItems: "stretch" }}>
+            <div className="w-full max-sm:w-[80%] px-4 pb-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 mt-6 gap-4 mx-auto" style={{ gap: "1rem", justifyItems: "stretch" }}>
                 {filterBySearch(data as Product[])?.map((item: any, index: number) => (
                     <div key={index} className="bg-zinc-900 relative pb-20 shadow-md shadow-purple-300 hover:shadow-purple-600 rounded-lg overflow-hidden card w-full">
                     <Link href={`/product/${item.id}`} className="w-full h-72 pb-20">

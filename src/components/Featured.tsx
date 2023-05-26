@@ -36,7 +36,7 @@ export default function Featured( {cart}: {cart: {
     //     )
     //     )}
     // </div>
-    <div className="w-[80%] max-sm:w-[65%] px-4 pb-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 mt-6 gap-4 mx-auto">
+    <div className="sm:w-[80%] max-sm:w-[75%] px-4 pb-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 mt-6 gap-4 mx-auto">
                 {data?.slice(0,4).map((item: any, index: number) => (
                     <div key={index} className="bg-zinc-900 relative pb-20 shadow-md shadow-purple-300 hover:shadow-purple-600 rounded-lg overflow-hidden card w-full">
                     <Link href={`/product/${item.id}`} className="w-full h-72 pb-20">

@@ -70,11 +70,11 @@ export default function Navbar({cart}: {cart: {
 
                 
               {<div className="flex max-sm:flex-col max-sm:items-start  items-center justify-center gap-8 font-semibold max-sm:hidden" >
-                <Link className={`text-purple-200 ${router.pathname === '/' ? 'border-b border-b-purple-200' : ''} hover:text-purple-400 p-2 nav-options max-sm:border-b max-sm:border-zinc-600 w-full`} href={'/'}>
+                <Link  className={`text-purple-200 ${router.pathname === '/' ? 'border-b border-b-purple-200' : ''} hover:text-purple-400 p-2 nav-options max-sm:border-b max-sm:border-zinc-600 w-full`} href={'/'}>
                     Home
 
                 </Link>
-                <Link className={`text-purple-200 ${router.pathname === '/shop' ? 'border-b border-b-purple-200' : ''} hover:text-purple-400 p-2 nav-options max-sm:border-b max-sm:border-zinc-600 w-full`} href={'/shop'}>
+                <Link  className={`text-purple-200 ${router.pathname === '/shop' ? 'border-b border-b-purple-200' : ''} hover:text-purple-400 p-2 nav-options max-sm:border-b max-sm:border-zinc-600 w-full`} href={'/shop'}>
                     Shop
 
                 </Link>
