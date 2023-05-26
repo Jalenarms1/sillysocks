@@ -37,7 +37,6 @@ export default function Product({cart}: {cart: {
                     </div>
                     <div>
                         <span className="text-2xl font-bold text-purple-300">${data?.price.toFixed(2)}</span>
-                        <span className="text-base text-gray-600 ml-2 line-through">$69.99</span>
                     </div>
                 </div>
                 <button onClick={() => cart.addToCart(data?.id as string, data?.name as string, data?.image as string, data?.description as string, data?.price as number)} className="py-2 px-4 w-full bg-purple-800 hover:bg-purple-900 text-white rounded-lg ">Add to Cart</button>
@@ -48,7 +47,7 @@ export default function Product({cart}: {cart: {
             <div className="px-4">
                 <h2 className="text-3xl font-extrabold tracking-tight text-purple-100">Popular</h2>
                 <div className="w-full py-4">
-                    <div className="sm:grid max-sm:flex max-sm:flex-col sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5  mt-6 sm:px-5 max-sm:gap-5 ">
+                    <div className="flex gap-5 max-sm:flex-col">
                         {products?.slice(0,4).map((item: any, index: number) => (
                             <div key={index} className="bg-zinc-900 relative pb-20 shadow-md shadow-purple-300 hover:shadow-purple-600 rounded-lg overflow-hidden card max-sm:w-72  w-60 max-sm:mx-auto ">
                                 <Link href={`/product/${item.id}`} className="w-full h-64">
@@ -61,7 +60,6 @@ export default function Product({cart}: {cart: {
                                     <div className="mt-2 flex flex-col absolute bottom-5 w-full">
                                         <div className=" pb-5">
                                             <span className="text-purple-300 font-bold text-xl">${item.price.toFixed(2)}</span>
-                                            <span className="text-gray-600 text-sm ml-2 line-through">$69.99</span>
                                         </div>
                                         <button onClick={() => cart.addToCart(item.id, item.name, item.image, item.description, item.price)} className="py-2 px-4 w-1/2 bg-purple-800 hover:bg-purple-700 text-white rounded-lg ">Add to Cart</button>
                                     </div>
