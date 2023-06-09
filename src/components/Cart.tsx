@@ -25,10 +25,10 @@ export default function Cart({isOpen, setIsOpen, cart}: {isOpen: boolean, setIsO
     
     const sendMail = trpc.dbRouter.sendMail.useMutation()
     const onSubmit = trpc.dbRouter.submittedOrder.useMutation()
-    const {data} = trpc.dbRouter.getSalesTax.useQuery({zipCode})
-    const [taxRate, setTaxRate] = useState(data?.rate?.combined_rate);
+    // const {data} = trpc.dbRouter.getSalesTax.useQuery({zipCode})
+    // const [taxRate, setTaxRate] = useState(data?.rate?.combined_rate);
+    const [taxRate, setTaxRate] = useState(.088);
     console.log(taxRate);
-    console.log(data);
     
     
     // const {addOne, subtractOne} = useSetGetLocalStorage()
@@ -74,27 +74,27 @@ export default function Cart({isOpen, setIsOpen, cart}: {isOpen: boolean, setIsO
         });
     };
 
-    useEffect(() => {
-        if (data && data.rate && data.rate.combined_rate) {
-          setTaxRate(data.rate.combined_rate);
-        }
-    }, [data]);
+    // useEffect(() => {
+    //     if (data && data.rate && data.rate.combined_rate) {
+    //       setTaxRate(data.rate.combined_rate);
+    //     }
+    // }, [data]);
 
     useEffect(() => {
-        if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(
-              (position) => {
-                const { latitude, longitude } = position.coords;
-                fetch(`https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${latitude}&longitude=${longitude}&localityLanguage=en`)
-                  .then(response => response.json())
-                  .then(data => {
-                    setZipCode(data.postcode);
-                  })
-                  .catch(error => console.error(error));
-              },
-              (error) => console.error(error)
-            );
-        } 
+        // if (navigator.geolocation) {
+        //     navigator.geolocation.getCurrentPosition(
+        //       (position) => {
+        //         const { latitude, longitude } = position.coords;
+        //         fetch(`https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${latitude}&longitude=${longitude}&localityLanguage=en`)
+        //           .then(response => response.json())
+        //           .then(data => {
+        //             setZipCode(data.postcode);
+        //           })
+        //           .catch(error => console.error(error));
+        //       },
+        //       (error) => console.error(error)
+        //     );
+        // } 
     }, [])
 
     // Aczc1MR7LF7SEwhA9s1hA1YPkWHaKexvxYWPsM7Q2vyIhCRkyTjvCbdATq2e7qETavmZ154pms3ySUug

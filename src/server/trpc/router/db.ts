@@ -135,6 +135,7 @@ export const dbRouter = router({
     .input(z.object({zipCode: z.string()}))
     .query(async ({input: {zipCode}}) => {
       const salesTaxRate = await taxjar.ratesForLocation(zipCode);
+      
       return salesTaxRate;
     })
 });
