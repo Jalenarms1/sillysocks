@@ -7,11 +7,7 @@
 
 /** @type {import("next").NextConfig} */
 const config = {
-  publicRuntimeConfig: {
-    PAYPAL_KEY: process.env.PAYPAL_KEY,
-    LIVE_KEY: process.env.LIVE_KEY
-    // add more variables here as needed
-  },
+  
   reactStrictMode: true,
   swcMinify: true,
   i18n: {

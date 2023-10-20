@@ -8,7 +8,6 @@ import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
 import {GrFormAdd} from 'react-icons/gr/index'
 import {GrFormSubtract} from 'react-icons/gr/index'
 import { trpc } from '../utils/trpc'
-import getConfig from 'next/config'
 
 
 
@@ -33,8 +32,6 @@ export default function Cart({isOpen, setIsOpen, cart}: {isOpen: boolean, setIsO
     // const [taxRate, setTaxRate] = useState(data?.rate?.combined_rate);
     const [taxRate, setTaxRate] = useState(.088);
     console.log(taxRate);
-    const {publicRuntimeConfig} = getConfig()
-    const paypalApiKey = publicRuntimeConfig.PAYPAL_KEY
 
     
     // const {addOne, subtractOne} = useSetGetLocalStorage()
