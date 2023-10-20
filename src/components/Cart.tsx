@@ -8,6 +8,7 @@ import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
 import {GrFormAdd} from 'react-icons/gr/index'
 import {GrFormSubtract} from 'react-icons/gr/index'
 import { trpc } from '../utils/trpc'
+import getConfig from 'next/config'
 
 
 
@@ -22,6 +23,9 @@ export default function Cart({isOpen, setIsOpen, cart}: {isOpen: boolean, setIsO
 }}) {
     const [zipCode, setZipCode] = useState('85043');
     console.log(zipCode);
+
+    const shippingFee = 5
+    const freeShippingThreshold = 20
     
     const sendMail = trpc.dbRouter.sendMail.useMutation()
     const onSubmit = trpc.dbRouter.submittedOrder.useMutation()
@@ -29,7 +33,9 @@ export default function Cart({isOpen, setIsOpen, cart}: {isOpen: boolean, setIsO
     // const [taxRate, setTaxRate] = useState(data?.rate?.combined_rate);
     const [taxRate, setTaxRate] = useState(.088);
     console.log(taxRate);
-    
+    const {publicRuntimeConfig} = getConfig()
+    const paypalApiKey = publicRuntimeConfig.PAYPAL_KEY
+
     
     // const {addOne, subtractOne} = useSetGetLocalStorage()
     const createOrder = (data:any, actions:any,) => {
@@ -96,11 +102,9 @@ export default function Cart({isOpen, setIsOpen, cart}: {isOpen: boolean, setIsO
         //     );
         // } 
     }, [])
-
-    // Aczc1MR7LF7SEwhA9s1hA1YPkWHaKexvxYWPsM7Q2vyIhCRkyTjvCbdATq2e7qETavmZ154pms3ySUug
-    // live - ARctucR5YVLCKYMlCQCSrSVixD6HdOfVAbK9SpKi0f4lPoxvdIBYyNgmFSs3ptIKB_vCgf0pVw-xg83f
+    
   return (
-    <PayPalScriptProvider options={{ "client-id": 'ARctucR5YVLCKYMlCQCSrSVixD6HdOfVAbK9SpKi0f4lPoxvdIBYyNgmFSs3ptIKB_vCgf0pVw-xg83f', currency: "USD" }}>
+    <PayPalScriptProvider options={{ "client-id": paypalApiKey as string, currency: "USD" }}>
 
         <div
             className={`fixed z-10 overflow-y-auto scrollbar-none inset-y-0 right-0 max-w-xs w-full bg-zinc-600 shadow-lg transform transition duration-300 ease-in-out ${
@@ -114,7 +118,7 @@ export default function Cart({isOpen, setIsOpen, cart}: {isOpen: boolean, setIsO
                     <p className='text-4xl text-white font-semibold'>Cart</p>
                 </div>
                 {/* Cart items here */}
-                <div className="contain-cart flex flex-col my-10">
+                <div className="contain-cart flex flex-col mt-10 mb-5">
                     
                     {typeof window !== 'undefined' && cart && cart.cart.map((item: any, index: any) => (
                     
@@ -140,9 +144,15 @@ export default function Cart({isOpen, setIsOpen, cart}: {isOpen: boolean, setIsO
                         
                     ))}
                     {cart.cart.length > 0 && <div className='w-full flex flex-col items-end pt-5 gap-3'>
+                        {taxRate && <p className="text-md text-white">Subtotal: ${cart.getTotal().toFixed(2)}</p>}
                         {taxRate && <p className="text-md text-white">Tax: ${(cart.getTotal() * taxRate).toFixed(2)}</p>}
-                        {taxRate && <p className="text-lg text-white">Total: ${(cart.getTotal() + (cart.getTotal() * taxRate)).toFixed(2)}</p>}
+                        {taxRate && <p className="text-md text-white">Shipping: ${cart.getTotal() >= freeShippingThreshold ? 0 : shippingFee.toFixed(2)}</p>}
+                        {taxRate && <p className="text-lg text-green-500"><span className='font-bold text-white'>Total:</span> ${((cart.getTotal() + (cart.getTotal() * taxRate)) + (cart.getTotal() >= freeShippingThreshold ? 0 : shippingFee)).toFixed(2)}</p>}
                     </div>}
+                    <div className="flex justify-end">
+                        <p className="text-sm text-slate-300 mt-2">Free shipping with a subtotal over ${freeShippingThreshold}!</p>
+
+                    </div>
                     
                 </div>
                 {cart && cart.cart.length > 0 && <PayPalButtons createOrder={createOrder} onApprove={onApprove} />} 

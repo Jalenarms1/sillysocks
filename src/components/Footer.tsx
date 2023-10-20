@@ -20,12 +20,12 @@ export default function Footer() {
                     </ul>
                 </div>
                 <div className="w-full md:w-1/3 mb-4 md:mb-0">
-                    <h2 className="text-2xl text-purple-200 font-bold mb-2">Comments</h2>
-                    <p className="mb-2">Send a quick comment or suggestion</p>
+                    <h2 className="text-2xl text-purple-200 font-bold mb-2">Subscribe</h2>
+                    <p className="mb-2">Receieve notifications when new products drop</p>
                     <form>
                     <div className="flex items-center">
-                        <input type="text" className="bg-gray-800 rounded-l-md py-2 px-4 text-gray-100 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent" placeholder="Enter your suggestion" />
-                        <button type="submit" className="bg-purple-500 hover:bg-purple-600 rounded-r-md py-2 px-4 text-gray-100 font-bold">Send</button>
+                        <input type="text" className="bg-gray-800 rounded-l-md py-2 px-4 text-gray-100 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent" placeholder="Enter your email" />
+                        <button disabled={true} type="submit" title='functionality in progress' className={`bg-purple-500 ${false ? 'hover:bg-purple-600' : ''} rounded-r-md py-2 px-4 text-gray-100 font-bold`}>Subscribe</button>
                     </div>
                     </form>
                 </div>
