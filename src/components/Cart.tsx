@@ -104,7 +104,7 @@ export default function Cart({isOpen, setIsOpen, cart}: {isOpen: boolean, setIsO
     }, [])
     
   return (
-    <PayPalScriptProvider options={{ "client-id": paypalApiKey as string, currency: "USD" }}>
+    <PayPalScriptProvider options={{ "client-id": process.env.NEXT_PUBLIC_PAYPAL_KEY as string, currency: "USD" }}>
 
         <div
             className={`fixed z-10 overflow-y-auto scrollbar-none inset-y-0 right-0 max-w-xs w-full bg-zinc-600 shadow-lg transform transition duration-300 ease-in-out ${
