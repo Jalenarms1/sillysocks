@@ -41,7 +41,7 @@ export default function Cart({isOpen, setIsOpen, cart}: {isOpen: boolean, setIsO
     const createOrder = (data:any, actions:any,) => {
         console.log(cart.getTotal());
         const cartTotal = JSON.parse(localStorage.getItem("sillysocks-cart") as string).reduce((acc:any, obj:any) => acc + obj.total, 0);
-        const totalWithTax = cartTotal + (cartTotal * (taxRate ?? 0.088));
+        const totalWithTax = cartTotal + (cartTotal * (taxRate ?? 0.088)) + (cart.getTotal() >= freeShippingThreshold ? 0 : shippingFee);
         console.log("incl", totalWithTax);
         
         return actions.order.create({
@@ -149,13 +149,13 @@ export default function Cart({isOpen, setIsOpen, cart}: {isOpen: boolean, setIsO
                         {taxRate && <p className="text-md text-white">Shipping: ${cart.getTotal() >= freeShippingThreshold ? 0 : shippingFee.toFixed(2)}</p>}
                         {taxRate && <p className="text-lg text-green-500"><span className='font-bold text-white'>Total:</span> ${((cart.getTotal() + (cart.getTotal() * taxRate)) + (cart.getTotal() >= freeShippingThreshold ? 0 : shippingFee)).toFixed(2)}</p>}
                     </div>}
-                    <div className="flex justify-end">
+                    {cart && cart.cart.length > 0 && <div className="flex justify-end">
                         <p className="text-sm text-slate-300 mt-2">Free shipping with a subtotal over ${freeShippingThreshold}!</p>
 
-                    </div>
+                    </div>}
                     
                 </div>
-                {cart && cart.cart.length > 0 && <PayPalButtons createOrder={createOrder} onApprove={onApprove} />} 
+                {cart && cart.cart.length > 0 ? <PayPalButtons createOrder={createOrder} onApprove={onApprove} /> : <p className='text-white text-center'>No items in your cart :(</p>} 
             </div>
         </div>
     </PayPalScriptProvider>
