@@ -74,7 +74,7 @@ export default function Shop( {cart}: {cart: {
                     <div className="md:flex md:flex-wrap md:-mx-4">
                         <div className="md:w-1/2 md:px-4">
                             <h2 className="text-3xl font-extrabold text-zinc-100 mb-4">Shipping</h2>
-                            <p className="text-lg text-zinc-100 mb-6">Our shipping policy states that all orders will be charged a flat shipping fee of $3. Shipping times will typically range between 3-5 business days from the time the order is placed. </p>
+                            <p className="text-lg text-zinc-100 mb-6">Our shipping policy states that all orders will be charged a flat shipping fee of $5. Any order with a subtotal over $20 qualifies for free shipping! Shipping times will typically range between 3-5 business days from the time the order is placed. </p>
                             <p className="text-lg text-zinc-100 mb-6">Please note that this timeframe may vary depending on the destination of the shipment and any unforeseen circumstances that may affect the shipping process. We strive to get your order to you as quickly as possible and will provide tracking information once your order has shipped. If you have any questions or concerns about your shipment, please don&apos;t hesitate to contact our customer service team.</p>
                         </div>
                         <div className="md:w-1/2 md:px-4 flex justify-center items-center rounded">
