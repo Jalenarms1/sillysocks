@@ -5,7 +5,7 @@ export default function Footer() {
   return (
     <footer className="bg-zinc-900 text-purple-500 shadow-lg shadow-purple-600">
         <div className=" px-7 py-8">
-              <div className="flex flex-wrap">
+              <div className="flex flex-wrap justify-between px-40">
                 <div className="w-full md:w-1/3 mb-4 md:mb-0">
                     <h2 className="text-2xl text-purple-200 font-bold mb-2">Contact Us</h2>
                     <p className="mb-2">sillysocksandmore@sillysocksandmore.com</p>
@@ -14,12 +14,12 @@ export default function Footer() {
                 <div className="w-full md:w-1/3 mb-4 md:mb-0">
                     <h2 className="text-2xl text-purple-200 font-bold mb-2">Links</h2>
                     <ul className=" list-inside list-none">
-                    <li><a href="#">About Us</a></li>
-                    <li><a href="#">Blog</a></li>
-                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Shop</a></li>
+                    {/* <li><a href="#">Contact Us</a></li> */}
                     </ul>
                 </div>
-                <div className="w-full md:w-1/3 mb-4 md:mb-0">
+                {/* <div className="w-full md:w-1/3 mb-4 md:mb-0">
                     <h2 className="text-2xl text-purple-200 font-bold mb-2">Subscribe</h2>
                     <p className="mb-2">Receieve notifications when new products drop</p>
                     <form>
@@ -28,7 +28,7 @@ export default function Footer() {
                         <button disabled={true} type="submit" title='functionality in progress' className={`bg-purple-500 ${false ? 'hover:bg-purple-600' : ''} rounded-r-md py-2 px-4 text-gray-100 font-bold`}>Subscribe</button>
                     </div>
                     </form>
-                </div>
+                </div> */}
               </div>
               <hr className="border-gray-500 my-8" />
               <div className="text-sm text-gray-500 text-center">
