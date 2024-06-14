@@ -8,12 +8,12 @@ export default function Featured( {cart, sliced}: {cart: {
     addToCart: (id: string, name: string, image: string, description: string, price: number) => void;
     removeFromCart: (id: string) => void;
     addOne: (id: string) => void;},
-    sliced: number
+    sliced?: number
 }) {
 
   const {data, isLoading} = trpc.dbRouter.getProducts.useQuery()
 
-  
+
 
   return (
     <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-6 gap-4 ">
