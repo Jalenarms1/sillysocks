@@ -54,7 +54,7 @@ const Home = ({cart}: {cart: {
           </div>
         </nav> */}
         {/* https://cdn-dynmedia-1.microsoft.com/is/image/microsoftcorp/Blade06_teamsbackground_Holiday1_382x252_2x?resMode=sharp2&op_usm=1.5,0.65,15,0&wid=786&hei=443&qlt=75&fit=constrain */}
-        <div className="relative h-96 shadow-sm shadow-purple-700 " >
+        <div className="relative h-96 shadow-sm shadow-zinc-700 " >
           <Image className=" opacity-10 absolute top-0 bottom-0  object-cover object-center h-full w-full" src="/images/sock-bg.png" alt="Background Image" width={500} height={500} />
           <div className="absolute top-0 left-0 w-full h-full  flex justify-center items-center">
               <div className="flex flex-col justify-center items-center max-sm:items-start text-purple-100 w-full max-sm:p-5">
@@ -70,9 +70,9 @@ const Home = ({cart}: {cart: {
           </div>
         </div>
 
-        <section className="pt-8">
-          <div className=" mx-auto flex items-center flex-wrap pt-4 pb-12 max-sm:pb-3">
-            <h1 className="w-full my-2 text-4xl max-sm:text-3xl font-bold leading-tight text-center text-purple-200 mb-10">Featured Products</h1>
+        <section className="pt-8 bg-white">
+          <div className=" px-2">
+            <h1 className="w-full my-2 text-4xl max-sm:text-3xl font-bold leading-tight text-center text-purple-900 mb-10">Featured Products</h1>
             <div className="w-full mb-4">
             <div className="h-1 mx-auto gradient w-64 opacity-25 my-0 py-0 rounded-t"></div>
             </div>
@@ -80,12 +80,12 @@ const Home = ({cart}: {cart: {
            
             <Featured cart={cart} />
             <div className="w-full py-16 flex justify-center mt-10">
-                <Link href={'/shop'} className="bg-purple-800 w-2/5 p-3 rounded-full hover:bg-purple-700 text-white text-center">See More</Link>
+                <Link href={'/shop'} className="bg-purple-800 w-1/4 p-3 rounded-full hover:bg-purple-700 text-white text-center">See More</Link>
             </div>
           </div>
         </section>
         {/* <div className="py-20 bg-zinc-900"></div> */}
-        <section className="bg-zinc-900 py-20 w-full  shadow-lg shadow-zinc-100 border-b border-zinc-800">
+        <section className="bg-zinc-900 py-20 w-full   border-b border-zinc-800">
         <div className="w-full mx-auto px-4 sm:px-6 lg:px-8">
             <div className="md:flex md:flex-wrap md:-mx-4">
                 <div className="md:w-1/2 md:px-4">
@@ -99,7 +99,7 @@ const Home = ({cart}: {cart: {
             </div>
         </div>
         </section>
-        <div className="py-12 bg-zinc-900"></div>
+        <div className="py-12 bg-zinc-900 "></div>
         
       
     </>

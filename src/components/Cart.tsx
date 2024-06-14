@@ -104,7 +104,7 @@ export default function Cart({isOpen, setIsOpen, cart}: {isOpen: boolean, setIsO
     <PayPalScriptProvider options={{ "client-id": process.env.NEXT_PUBLIC_PAYPAL_KEY as string, currency: "USD" }}>
 
         <div
-            className={`fixed z-10 overflow-y-auto scrollbar-none inset-y-0 right-0 max-w-xs w-full bg-zinc-600 shadow-lg transform transition duration-300 ease-in-out ${
+            className={`fixed z-10 overflow-y-auto scrollbar-none inset-y-0 right-0 max-w-xs w-full bg-zinc-900 border-l border-zinc-800 shadow-lg transform transition duration-300 ease-in-out ${
             isOpen ? "translate-x-0" : "translate-x-full"
             }`}>
             <div className="p-4">
@@ -115,15 +115,15 @@ export default function Cart({isOpen, setIsOpen, cart}: {isOpen: boolean, setIsO
                     <p className='text-4xl text-white font-semibold'>Cart</p>
                 </div>
                 {/* Cart items here */}
-                <div className="contain-cart flex flex-col mt-10 mb-5">
+                <div className="contain-cart flex flex-col items-start gap-4 mt-10 mb-5">
                     
                     {typeof window !== 'undefined' && cart && cart.cart.map((item: any, index: any) => (
                     
-                        <div key={index} className="cart-item w-full bg-zinc-300 rounded flex mt-3 h-14">
-                            <Image src={item.image} alt={"sock"} width={250} height={250} className="w-16 rounded-l shadow-md shadow-zinc-700"/>
-                            <div className="w-full flex justify-between items-center pl-1 pr-2">
-                                <div className="cart-item-desc py-1 px-2 flex flex-col">
-                                    <p className='text-md text-zinc-900 font-semibold'>{item.name}</p>
+                        <div key={index} className="cart-item w-full bg-zinc-300 rounded flex">
+                            <Image src={item.image} alt={"sock"} width={250} height={250} className="w-16 h-16 rounded-l shadow-md shadow-zinc-700"/>
+                            <div className="w-full flex justify-between items-start p-2  gap-2">
+                                <div className="cart-item-desc flex flex-col justify-between h-full">
+                                    <p className='text-sm text-zinc-900 font-semibold'>{item.name}</p>
                                     <div className="quantity-wrap flex items-center gap-2">
                                         <p className=''>{item.quantity}</p>
                                         <GrFormAdd onClick={() => cart.addOne(item.id)} className='cursor-pointer shadow-sm shadow-zinc-800 active:bg-zinc-400' />

@@ -25,7 +25,7 @@ export default function Shop( {cart}: {cart: {
     }
 
     const filterBySearch = (arr: Product[]) => {
-        const newArr = arr?.filter(item => item.name.toLowerCase().startsWith(searchInput.toLowerCase()))
+        const newArr = arr?.filter(item => item.name.toLowerCase().includes(searchInput.toLowerCase()))
 
         return newArr
     }
@@ -33,7 +33,7 @@ export default function Shop( {cart}: {cart: {
   return (
     <div className=''>
         {/* <Image width={250} height={250} src={'/images/sockslogo.png'} alt={"logo"} className="bg-blend-multiply  max-sm:w-4/5 max-sm:mx-auto m-5 h-48 rounded-lg " /> */}
-        <section className="bg-zinc-800  flex max-sm:flex-col justify-between items-center max-sm:p-4 max-sm:items-start pt-16 shadow-inner shadow-zinc-900">
+        <section className="bg-zinc-800  flex max-sm:flex-col justify-between items-center max-sm:p-4 max-sm:items-start pt-16 shadow-inner shadow-zinc-900 border-b border-zinc-700">
             <div className="max-sm:p-1 sm:px-6 ">
                 <h2 className="text-purple-200 text-3xl ">Browse our Products</h2>
                 <p className="mt-2 text-gray-400 text-md">Find exactly what you are looking for with a quick search.</p>
@@ -43,26 +43,40 @@ export default function Shop( {cart}: {cart: {
                 <BsSearch className='absolute bottom-4 right-5 md:bottom-7 md:right-12'/>
             </div>
         </section>
-        <div className="flex flex-wrap min-w-screen-xl border-t border-zinc-800 mx-auto">
+        <div className="flex flex-wrap min-w-screen-xl border-t border-zinc-800 mx-auto bg-zinc-800">
             
             
-            <div className="w-full max-sm:w-[80%] px-4 pb-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 mt-6 gap-4 mx-auto" style={{ gap: "1rem", justifyItems: "stretch" }}>
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-6 gap-4 p-4" >
                 {filterBySearch(data as Product[])?.map((item: any, index: number) => (
-                    <div key={index} className="bg-zinc-900 relative pb-20 shadow-md shadow-purple-300 hover:shadow-purple-600 rounded-lg overflow-hidden card w-full">
-                    <Link href={`/product/${item.id}`} className="w-full h-72 pb-20">
-                        <Image width={250} height={250} className="w-full h-72  object-cover" src={item.image} alt="Product image" />
+                    <div
+                    key={item.id}
+                    className="bg-white hover:scale-[1.05] transition-all  border p-4 rounded-lg shadow-md hover:shadow-lg  duration-200 cursor-pointer flex flex-col justify-between"
+                  >
+                    <Link href={`/product/${item.id}`} passHref>
+                      
+                      <div className="h-[200px] w-full flex items-center justify-center">
+                      <Image
+                          src={item.image}
+                          alt={item.name}
+                          width={250}
+                          height={250}
+                          className="object-contain max-h-full max-w-full rounded"
+                      />
+                      </div>
+                      
                     </Link>
-                    <div className="p-4 pb-10">
-                        <h2 className="text-purple-300 font-bold text-2xl tracking-tight mb-2">{item.name}</h2>
-                        <p className={`text-zinc-300 text-base`}>{item.description}</p>
-                        <div className="mt-2 flex flex-col absolute bottom-5 w-full">
-                        <div className=" pb-5">
-                            <span className="text-purple-300 font-bold text-xl">${item.price.toFixed(2)}</span>
-                        </div>
-                        <button onClick={() => cart.addToCart(item.id, item.name, item.image, item.description, item.price)} className="py-2 px-4 w-1/2 bg-purple-800 hover:bg-purple-700 text-white rounded-lg ">Add to Cart</button>
-                        </div>
-                    </div>
-                    </div>
+                    
+                    <h3 className="text-lg font-semibold mt-8 align-text-bottom inline-block h-16">{item.name}</h3>
+                    <p className="text-gray-600 mb-4">{item.price}</p>
+                    <button
+                      onClick={() =>
+                        cart.addToCart(item.id, item.name, item.image, item.description, item.price)
+                      }
+                      className="bg-green-500 text-white px-4 py-2 rounded text-center"
+                    >
+                      Add to Cart
+                    </button>
+                  </div>
                 ))}
             </div>
 
