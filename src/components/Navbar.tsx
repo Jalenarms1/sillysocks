@@ -37,11 +37,11 @@ export default function Navbar({cart}: {cart: {
       
         setWindowWidth(window.innerWidth)
         const handleResize = () => {
-          if (window.innerWidth > 648) {
-            setShowMenu(true);
-          } else {
-            setShowMenu(false);
-          }
+          // if (window.innerWidth > 648) {
+          //   setShowMenu(true);
+          // } else {
+          //   setShowMenu(false);
+          // }
           setWindowWidth(window.innerWidth)
         };
     
@@ -94,7 +94,7 @@ export default function Navbar({cart}: {cart: {
                 
                 
               {<div className="flex max-sm:flex-col max-sm:items-start  items-center justify-center font-semibold gap-5 max-sm:w-full" >
-                {windowWidth < 648 && showMenu && <div className='flex flex-col gap-5 w-full mt-2'>
+                {windowWidth < 648 && showMenu && <div className='flex flex-col gap-5 w-full my-2'>
                   <Link className="text-purple-200 hover:text-purple-400 nav-options max-sm:border-b max-sm:border-zinc-600 w-full" href={'/'}>
                       Home
 
