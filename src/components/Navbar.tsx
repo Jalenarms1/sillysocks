@@ -63,9 +63,13 @@ export default function Navbar({cart}: {cart: {
                 </Link>
 
                 {/* <Image width={250} height={250} src={'/images/sslogo.jpeg'} alt={"logo"} className="bg-blend-multiply w-20" /> */}
-                <button onClick={handleShowMenu} className="bg-transparent border-0 sm:hidden active:shadow-md active:shadow-zinc-700">
-                    <Image src={`/images/menu.png`} alt="menu" className="w-10" width={20} height={20} id="show-menu-btn" />
-                </button>
+                <div className="flex items-center gap-2 sm:hidden">
+                  <BsCart4 onClick={() => setIsOpen(!isOpen)} className='text-yellow-400 text-3xl cursor-pointer active:text-yellow-600' />
+                  <button onClick={handleShowMenu} className="bg-transparent border-0 sm:hidden active:shadow-md active:shadow-zinc-700">
+                      <Image src={`/images/menu.png`} alt="menu" className="w-10" width={20} height={20} id="show-menu-btn" />
+                  </button>
+
+                </div>
               </div>
 
                 
@@ -102,7 +106,7 @@ export default function Navbar({cart}: {cart: {
                   {/* <a className="text-purple-200 hover:text-purple-400 nav-options max-sm:border-b max-sm:border-zinc-600 w-full" href="#">Login</a> */}
 
                 </div>}
-                <div className="w-full">
+                <div className="w-full sm:block hidden">
                   <button onClick={() => setIsOpen(!isOpen)} className="text-yellow-400 flex items-center gap-1 max-sm:pt-10 hover:text-yellow-600 nav-options w-fit max-sm:pb-3" >
                       <p>Cart</p>
                       <BsCart4  />
