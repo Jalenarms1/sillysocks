@@ -95,11 +95,11 @@ export default function Navbar({cart}: {cart: {
                 
               {<div className="flex max-sm:flex-col max-sm:items-start  items-center justify-center font-semibold gap-5 max-sm:w-full" >
                 {windowWidth < 648 && showMenu && <div className='flex flex-col gap-5 w-full my-2'>
-                  <Link className="text-purple-200 hover:text-purple-400 nav-options max-sm:border-b max-sm:border-zinc-600 w-full" href={'/'}>
+                  <Link onClick={() => setShowMenu(false)} className="text-purple-200 hover:text-purple-400 nav-options max-sm:border-b max-sm:border-zinc-600 w-full" href={'/'}>
                       Home
 
                   </Link>
-                  <Link className="text-purple-200 hover:text-purple-400 nav-options max-sm:border-b max-sm:border-zinc-600 w-full" href={'/shop'}>
+                  <Link onClick={() => setShowMenu(false)} className="text-purple-200 hover:text-purple-400 nav-options max-sm:border-b max-sm:border-zinc-600 w-full" href={'/shop'}>
                       Shop
 
                   </Link> 

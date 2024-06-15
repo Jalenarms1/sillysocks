@@ -20,7 +20,7 @@ export default function Featured( {cart, sliced}: {cart: {
       {data?.slice(0, 12).map((item, index) => (
         <div
           key={item.id}
-          className="bg-white hover:scale-[1.05] transition-all  border p-4 rounded-lg shadow-md hover:shadow-lg  duration-200 cursor-pointer flex flex-col justify-between"
+          className="bg-white hover:scale-[1.05] transition-all  border  rounded-lg shadow-md hover:shadow-lg border-zinc-300  duration-200 cursor-pointer flex flex-col justify-between"
         >
           <Link href={`/product/${item.id}`} passHref>
             
@@ -35,17 +35,19 @@ export default function Featured( {cart, sliced}: {cart: {
             </div>
             
           </Link>
-          
-          <h3 className="text-lg font-semibold mt-8 align-text-bottom inline-block h-16">{item.name}</h3>
-          <p className="text-gray-600 mb-4">{item.price}</p>
-          <button
-            onClick={() =>
-              cart.addToCart(item.id, item.name, item.image, item.description, item.price)
-            }
-            className="bg-green-500 text-white px-4 py-2 rounded text-center"
-          >
-            Add to Cart
-          </button>
+          <div className="flex flex-col p-4 border-t border-zinc-300 shadow-inner rounded-lg shadow-zinc-200 bg-zinc-100">
+            <h3 className="text-lg font-semibold  align-text-top inline-block h-16 ">{item.name}</h3>
+            <p className="text-gray-600 mb-4">{item.price}</p>
+            <button
+                onClick={() =>
+                cart.addToCart(item.id, item.name, item.image, item.description, item.price)
+                }
+                className="bg-green-500 text-white px-4 py-2 rounded text-center"
+            >
+                Add to Cart
+            </button>
+
+          </div>
         </div>
       ))}
     </div>
